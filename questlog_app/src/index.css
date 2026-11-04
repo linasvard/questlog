@@ -15,8 +15,27 @@
   padding: 0;
 }
 
+main {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
 h1 {
   font-size: 4rem;
+}
+
+button {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 @utility bg-grid {
@@ -25,4 +44,9 @@ h1 {
     linear-gradient(to bottom, var(--grid-color, #2d222f) 1px, transparent 1px);
   background-size: var(--grid-size, 24px) var(--grid-size, 24px);
   background-color: var(--color-dark);
+}
+
+@utility content-width {
+  max-width: 1500px;
+  margin: 0 auto;
 }

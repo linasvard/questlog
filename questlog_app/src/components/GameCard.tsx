@@ -8,7 +8,11 @@ const GameCard = ({ game }: Props) => {
     <Link to={`/games/${game.id}`}>
       <article>
         {game.coverUrl && (
-          <img src={game.coverUrl} alt={`${game.title} cover`} />
+          <img
+            className="w-full h-auto rounded-lg object-cover"
+            src={game.coverUrl}
+            alt={`${game.title} cover`}
+          />
         )}
         <h2>{game.title}</h2>
         <p>Platform: {game.platform}</p>

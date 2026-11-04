@@ -9,3 +9,10 @@ export type Game = {
   coverUrl?: string;
   notes?: string;
 };
+
+export const STATUSES: GameStatus[] = [
+  'want',
+  'playing',
+  'completed',
+  'dropped',
+];
