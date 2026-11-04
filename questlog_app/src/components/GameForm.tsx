@@ -3,7 +3,7 @@ import { STATUSES, type GameFormValues, type GameStatus } from '../types/game';
 import { type SubmitEvent, useState } from 'react';
 
 type GameFormProps = {
-  initialValues: GameFormValues;
+  initialValues?: GameFormValues;
   submitLabel: string;
   onSubmit: (values: GameFormValues) => void;
   onCancel: () => void;
@@ -27,7 +27,9 @@ const GameForm = ({
   const [title, setTitle] = useState(initialValues.title);
   const [platform, setPlatform] = useState(initialValues.platform);
   const [status, setStatus] = useState<GameStatus>(initialValues.status);
-  const [rating, setRating] = useState(initialValues.rating ?? '');
+  const [rating, setRating] = useState(
+    initialValues.rating ? String(initialValues.rating) : '',
+  );
   const [coverUrl, setCoverUrl] = useState(initialValues.coverUrl);
   const [notes, setNotes] = useState(initialValues.notes);
 
@@ -85,7 +87,7 @@ const GameForm = ({
           value={rating}
           onChange={(e) => setRating(e.target.value)}>
           <option value="">No rating</option>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+          {[1, 2, 3, 4, 5].map((n) => (
             <option key={n} value={n}>
               {n}
             </option>

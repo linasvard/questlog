@@ -11,7 +11,7 @@ const Layout = () => {
               <NavLink to="/">My games</NavLink>
             </li>
             <li>
-              <NavLink to="/games">Add game</NavLink>
+              <NavLink to="/games/new">Add game</NavLink>
             </li>
           </ul>
         </nav>
