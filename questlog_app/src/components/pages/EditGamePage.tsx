@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router';
 import { getGame, updateGame } from '../../api/games';
 import { useEffect, useState, type SubmitEvent } from 'react';
 import { STATUSES, type Game, type GameStatus } from '../../types/game';
+import { capitalize } from '../../utils/format';
 
 const EditGamePage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -105,19 +106,22 @@ const EditGamePage = () => {
           onChange={(e) => setEditedStatus(e.target.value as GameStatus)}>
           {STATUSES.map((s) => (
             <option key={s} value={s}>
-              {s}
+              {capitalize(s)}
             </option>
           ))}
         </select>
         <label htmlFor="rating">Rating</label>
-        <input
+        <select
+          id="rating"
           value={rating}
-          onChange={(e) => setEditedRating(e.target.value)}
-          type="number"
-          name="rating"
-          min={0}
-          max={10}
-        />
+          onChange={(e) => setEditedRating(e.target.value)}>
+          <option value="">No rating</option>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+            <option key={n} value={n}>
+              {n}
+            </option>
+          ))}
+        </select>
         <label htmlFor="notes">Notes</label>
         <textarea
           value={notes}
