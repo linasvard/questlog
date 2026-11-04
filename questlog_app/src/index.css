@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-color, #e5e7eb) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color, #e5e7eb) 1px, transparent 1px);
+  background-size: var(--grid-size, 24px) var(--grid-size, 24px);
+}
