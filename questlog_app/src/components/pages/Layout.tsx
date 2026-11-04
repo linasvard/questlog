@@ -2,21 +2,21 @@ import { NavLink, Outlet } from 'react-router';
 
 const Layout = () => {
   return (
-    <div className="bg-grid">
+    <div className="bg-grid min-h-screen flex flex-col">
       <header>
-        <nav>
+        <nav className="bg-dark text-light p-4 flex justify-between items-center">
           <p>Questlog</p>
-          <ul>
+          <ul className="flex space-x-4">
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/">My games</NavLink>
             </li>
             <li>
-              <NavLink to="/games">Games</NavLink>
+              <NavLink to="/games">Add game</NavLink>
             </li>
           </ul>
         </nav>
       </header>
-      <main>
+      <main className="flex-1">
         <Outlet />
       </main>
       <footer>

@@ -4,10 +4,14 @@
   /* Font styles */
 
   /* Color styles */
-  --color-light: #f5f5f5;
-  --color-dark: #201722;
-  --grid-color: #2d222f;
-  --grid-size: 24px;
+  --color-light: #faf3dc;
+  --color-dark: #131014;
+  --grid-color: #181219;
+  --grid-size: 1.5rem;
+}
+#root {
+  font-family: 'Inter', sans-serif;
+  color: var(--color-light);
 }
 
 h1 {
