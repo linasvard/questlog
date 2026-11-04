@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+h1 {
+  font-size: 4rem;
+}
+
 @utility bg-grid {
   background-image:
     linear-gradient(to right, var(--grid-color, #e5e7eb) 1px, transparent 1px),
