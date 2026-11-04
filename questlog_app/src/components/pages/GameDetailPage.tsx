@@ -1,11 +1,10 @@
-import { useNavigate, useParams } from 'react-router';
+import { useParams, Link } from 'react-router';
 import { getGame } from '../../api/games';
 import { useEffect, useState } from 'react';
 import type { Game } from '../../types/game';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [game, setGame] = useState<Game | null>(null);
   const [error, setError] = useState('');
@@ -35,9 +34,7 @@ const GameDetailPage = () => {
     <div>
       <h1>This is {game.title}</h1>
       <img src={game.coverUrl} alt={`${game.title} cover`} />
-      <button onClick={() => navigate(`/games/${game.id}/edit`)}>
-        Edit game
-      </button>
+      <Link to={`/games/${game.id}/edit`}>Edit Game</Link>
     </div>
   );
 };
