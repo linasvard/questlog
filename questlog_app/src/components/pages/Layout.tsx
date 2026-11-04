@@ -5,7 +5,7 @@ const Layout = () => {
     <div className="bg-grid min-h-screen flex flex-col">
       <header>
         <nav className="bg-dark text-light p-4 flex justify-between items-center">
-          <p>Questlog</p>
+          <NavLink to="/">Questlog</NavLink>
           <ul className="flex space-x-4">
             <li>
               <NavLink to="/">My games</NavLink>
