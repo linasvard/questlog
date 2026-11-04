@@ -16,3 +16,12 @@ export const STATUSES: GameStatus[] = [
   'completed',
   'dropped',
 ];
+
+export type GameFormValues = {
+  title: string;
+  platform: string;
+  status: GameStatus;
+  rating: number | null;
+  coverUrl: string;
+  notes: string;
+};
