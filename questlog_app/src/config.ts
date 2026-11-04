@@ -1,2 +1,1 @@
-export const HANDLE = 'lina-j';
-export const API_URL = `https://questlog-api.vercel.app/api/${HANDLE}`;
+export const API_URL = `https://questlog-api.vercel.app/api/lina-j`;

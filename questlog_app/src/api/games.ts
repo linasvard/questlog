@@ -1,4 +1,4 @@
-import { API_URL, HANDLE } from '../config';
+import { API_URL } from '../config';
 import type { Game, GameStatus } from '../types/game';
 
 export type NewGame = { title: string; platform: string; status: GameStatus };
@@ -14,7 +14,7 @@ export type UpdateGame = {
 
 // GET All games for the user
 export const getAllGames = async () => {
-  const response = await fetch(`${API_URL}/${HANDLE}/games}`);
+  const response = await fetch(`${API_URL}/games`);
   if (!response.ok) {
     throw new Error(`Failed to fetch games (${response.status})`);
   }
@@ -24,7 +24,7 @@ export const getAllGames = async () => {
 
 // GET a single game by ID
 export const getGame = async (id: string) => {
-  const response = await fetch(`${API_URL}/${HANDLE}/games/${id}`);
+  const response = await fetch(`${API_URL}/games/${id}`);
   if (response.status === 404) {
     throw new Error(`Game with ID ${id} not found`);
   }
@@ -38,7 +38,7 @@ export const getGame = async (id: string) => {
 
 // POST a new game
 export const addGame = async (game: NewGame) => {
-  const response = await fetch(`${API_URL}/${HANDLE}/games`, {
+  const response = await fetch(`${API_URL}/games`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(game),
@@ -52,7 +52,7 @@ export const addGame = async (game: NewGame) => {
 
 // PATCH an existing game by ID
 export const updateGame = async (id: string, changes: UpdateGame) => {
-  const response = await fetch(`${API_URL}/${HANDLE}/games/${id}`, {
+  const response = await fetch(`${API_URL}/games/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(changes),
@@ -66,9 +66,7 @@ export const updateGame = async (id: string, changes: UpdateGame) => {
 
 // DELETE a game by ID
 export const deleteGame = async (id: string) => {
-  const response = await fetch(`${API_URL}/${HANDLE}/games/${id}`, {
-    method: 'DELETE',
-  });
+  const response = await fetch(`${API_URL}/games/${id}`, { method: 'DELETE' });
   if (!response.ok) {
     throw new Error(`Failed to delete game with ID ${id} (${response.status})`);
   }
