@@ -35,7 +35,7 @@ const GameDetailPage = () => {
     <div>
       <h1>This is {game.title}</h1>
       <img src={game.coverUrl} alt={`${game.title} cover`} />
-      <button onClick={() => navigate(`/puns/${game.id}/edit`)}>
+      <button onClick={() => navigate(`/games/${game.id}/edit`)}>
         Edit game
       </button>
     </div>
