@@ -20,6 +20,7 @@ const EditGamePage = () => {
   const [editedRating, setEditedRating] = useState<string | null>(null);
   const [editedCoverUrl, setEditedCoverUrl] = useState<string | null>(null);
   const [editedNotes, setEditedNotes] = useState<string | null>(null);
+  const [imageError, setImageError] = useState(false);
 
   const title = editedTitle ?? game?.title ?? '';
   const platform = editedPlatform ?? game?.platform ?? '';
@@ -76,68 +77,97 @@ const EditGamePage = () => {
   }
 
   return (
-    <div>
+    <div className="p-6">
       <h1>Edit game</h1>
       {isLoading && <p>Loading game...</p>}
       {message && <p role="status">{message}</p>}
-      <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
-        <label htmlFor="title">Title</label>
-        <input
-          value={title}
-          onChange={(e) => setEditedTitle(e.target.value)}
-          type="text"
-          name="title"
-          required
-        />
 
-        <label htmlFor="platform">Platform</label>
-        <input
-          value={platform}
-          onChange={(e) => setEditedPlatform(e.target.value)}
-          type="text"
-          name="platform"
-          required
-        />
+      <form
+        onSubmit={handleSubmit}
+        className="grid gap-8 md:grid-cols-2 md:items-start">
+        <div className="flex flex-col gap-4">
+          <label htmlFor="title">Title</label>
+          <input
+            id="title"
+            type="text"
+            value={title}
+            onChange={(e) => setEditedTitle(e.target.value)}
+            required
+          />
 
-        <label htmlFor="status">Status:</label>
-        <select
-          id="status"
-          value={status}
-          onChange={(e) => setEditedStatus(e.target.value as GameStatus)}>
-          {STATUSES.map((s) => (
-            <option key={s} value={s}>
-              {capitalize(s)}
-            </option>
-          ))}
-        </select>
-        <label htmlFor="rating">Rating</label>
-        <select
-          id="rating"
-          value={rating}
-          onChange={(e) => setEditedRating(e.target.value)}>
-          <option value="">No rating</option>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-            <option key={n} value={n}>
-              {n}
-            </option>
-          ))}
-        </select>
-        <label htmlFor="notes">Notes</label>
-        <textarea
-          value={notes}
-          onChange={(e) => setEditedNotes(e.target.value)}
-          name="notes"
-        />
-        <label>Cover</label>
-        <input
-          value={coverUrl}
-          onChange={(e) => setEditedCoverUrl(e.target.value)}
-          type="text"
-          name="coverUrl"
-        />
-        <button type="submit">Save</button>
+          <label htmlFor="platform">Platform</label>
+          <input
+            id="platform"
+            type="text"
+            value={platform}
+            onChange={(e) => setEditedPlatform(e.target.value)}
+            required
+          />
+
+          <label htmlFor="status">Status</label>
+          <select
+            id="status"
+            value={status}
+            onChange={(e) => setEditedStatus(e.target.value as GameStatus)}>
+            {STATUSES.map((s) => (
+              <option key={s} value={s}>
+                {capitalize(s)}
+              </option>
+            ))}
+          </select>
+
+          <label htmlFor="rating">Rating</label>
+          <select
+            id="rating"
+            value={rating}
+            onChange={(e) => setEditedRating(e.target.value)}>
+            <option value="">No rating</option>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+              <option key={n} value={n}>
+                {n}
+              </option>
+            ))}
+          </select>
+
+          <label htmlFor="notes">Notes</label>
+          <textarea
+            id="notes"
+            value={notes}
+            onChange={(e) => setEditedNotes(e.target.value)}
+          />
+
+          <label htmlFor="coverUrl">Cover URL</label>
+          <input
+            id="coverUrl"
+            type="url"
+            value={coverUrl}
+            onChange={(e) => {
+              setEditedCoverUrl(e.target.value);
+              setImageError(false);
+            }}
+          />
+        </div>
+        <div className="flex justify-center md:col-start-2 md:row-span-2 md:row-start-1 md:self-center">
+          {coverUrl && !imageError && (
+            <img
+              src={coverUrl}
+              alt="Cover preview"
+              className="w-full max-w-80 rounded"
+              onError={() => setImageError(true)}
+            />
+          )}
+          {coverUrl && imageError && (
+            <p>Kunde inte ladda bilden. Kolla länken.</p>
+          )}
+        </div>
+
+        <div className="flex gap-2">
+          <button type="submit">Save</button>
+          <button type="button" onClick={() => navigate(-1)}>
+            Go back
+          </button>
+        </div>
       </form>
-      <button onClick={() => navigate(-1)}>Go Back</button>
     </div>
   );
 };

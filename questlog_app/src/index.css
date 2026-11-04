@@ -24,6 +24,15 @@ h1 {
   font-size: 4rem;
 }
 
+button {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 @utility bg-grid {
   background-image:
     linear-gradient(to right, var(--grid-color, #2d222f) 1px, transparent 1px),
