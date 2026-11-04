@@ -2,9 +2,9 @@ import { NavLink, Outlet } from 'react-router';
 
 const Layout = () => {
   return (
-    <div className="bg-grid min-h-screen flex flex-col">
+    <div className="bg-grid min-h-screen flex flex-col py-5 px-6">
       <header>
-        <nav className="bg-dark text-light p-4 flex justify-between items-center">
+        <nav className="bg-dark text-light flex justify-between items-center">
           <NavLink to="/">Questlog</NavLink>
           <ul className="flex space-x-4">
             <li>

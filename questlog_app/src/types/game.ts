@@ -5,7 +5,7 @@ export type Game = {
   title: string;
   platform: string;
   status: GameStatus;
-  rating: number;
-  coverUrl: string;
-  notes: string;
+  rating: number | null;
+  coverUrl?: string;
+  notes?: string;
 };

@@ -12,6 +12,7 @@
 #root {
   font-family: 'Inter', sans-serif;
   color: var(--color-light);
+  padding: 0;
 }
 
 h1 {
