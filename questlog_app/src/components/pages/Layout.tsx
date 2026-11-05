@@ -5,8 +5,10 @@ const Layout = () => {
     <div className="bg-grid min-h-screen flex flex-col py-5 px-6">
       <header>
         <nav className="bg-dark text-light flex justify-between items-center">
-          <NavLink to="/">Questlog</NavLink>
-          <ul className="flex space-x-4">
+          <NavLink className="font-pixel text-xl" to="/">
+            Questlog
+          </NavLink>
+          <ul className="font-bold flex space-x-4">
             <li>
               <NavLink to="/">My games</NavLink>
             </li>

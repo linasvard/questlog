@@ -2,6 +2,7 @@
 
 @theme {
   /* Font styles */
+  --font-pixel: 'lores-9-plus-wide-bold-alt', sans-serif;
 
   /* Color styles */
   --color-light: #faf3dc;
@@ -22,6 +23,7 @@ label {
 
 h1 {
   font-size: 4rem;
+  font-family: var(--font-pixel);
 }
 
 input,
