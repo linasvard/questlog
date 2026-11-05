@@ -17,7 +17,7 @@ const GameCard = ({ game }: Props) => {
         <h2>{game.title}</h2>
         <p>Platform: {game.platform}</p>
         <p>Status: {game.status}</p>
-        {game.rating !== null && <p>Rating: {game.rating}/10</p>}
+        {game.rating !== null && <p>Rating: {game.rating}/5</p>}
         {game.notes && <p>Notes: {game.notes}</p>}
       </article>
     </Link>
