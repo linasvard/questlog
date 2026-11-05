@@ -17,6 +17,7 @@
   --color-yellow: #f9cb13;
   --color-blue: #2884ff;
   --color-green: #01ab55;
+  --color-orange: #f99026;
   --grid-size: 1.5rem;
 }
 #root {
@@ -61,6 +62,10 @@ textarea {
 
 @utility padding {
   padding: 3rem 2rem;
+}
+
+@utility shadow {
+  box-shadow: 5px 5px 0 var(--color-purple);
 }
 
 @utility btn {

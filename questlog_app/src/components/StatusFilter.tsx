@@ -8,7 +8,7 @@ const StatusFilter = ({ active, onChange }: StatusFilterProps) => {
   const filters: Filter[] = ['all', ...STATUSES];
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="content-width flex flex-wrap gap-4">
       {filters.map((filter) => {
         const isActive = active === filter;
         return (
