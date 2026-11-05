@@ -112,17 +112,20 @@ const GameForm = ({
           }}
         />
       </div>
-      <div className="flex justify-center md:col-start-2 md:row-span-2 md:row-start-1 md:self-center">
-        {coverUrl && !imageError && (
+      <div className="flex flex-col items-center gap-2 md:col-start-2 md:row-span-2 md:row-start-1 md:self-center">
+        <h2>Cover Preview</h2>
+
+        {coverUrl && !imageError ? (
           <img
             src={coverUrl}
             alt="Cover preview"
-            className="w-full max-w-80 rounded"
+            className="w-full max-w-80 rounded object-cover"
             onError={() => setImageError(true)}
           />
-        )}
-        {coverUrl && imageError && (
-          <p>Couldn't load the image. Please check the URL.</p>
+        ) : (
+          <div className="flex aspect-3/4 w-full max-w-80 items-center justify-center rounded border-2 border-dashed border-light/30 text-light/50">
+            {imageError ? "Couldn't load the image" : 'No cover yet'}
+          </div>
         )}
       </div>
 
