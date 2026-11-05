@@ -6,8 +6,17 @@
 
   /* Color styles */
   --color-light: #faf3dc;
-  --color-dark: #18141a;
-  --grid-color: #251c28;
+  --color-dark: #1c171e;
+  --color-dark-alt: #151017;
+  --grid-color: #261c2a;
+
+  --color-purple: #4a1c7d;
+  --color-pink: #eb59a0;
+  --color-pink-dark: #b13e9c;
+  --color-red: #fe0000;
+  --color-yellow: #f9cb13;
+  --color-blue: #2884ff;
+  --color-green: #01ab55;
   --grid-size: 1.5rem;
 }
 #root {
@@ -36,21 +45,12 @@ textarea {
   color: var(--color-dark);
 }
 
-button {
-  background-color: var(--color-light);
-  color: var(--color-dark);
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
 @utility bg-grid {
   background-image:
     linear-gradient(to right, var(--grid-color, #2d222f) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-color, #2d222f) 1px, transparent 1px);
   background-size: var(--grid-size, 24px) var(--grid-size, 24px);
-  background-color: var(--color-dark);
+  background-color: var(--color-dark-alt);
   background-attachment: fixed;
 }
 
@@ -61,4 +61,32 @@ button {
 
 @utility padding {
   padding: 3rem 2rem;
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border: 3px solid var(--color-dark-alt);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 5px 5px 0 var(--color-purple);
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+
+  &:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--color-purple);
+  }
+
+  &:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 var(--color-purple);
+  }
 }
