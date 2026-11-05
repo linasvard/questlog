@@ -6,8 +6,8 @@
 
   /* Color styles */
   --color-light: #faf3dc;
-  --color-dark: #131014;
-  --grid-color: #181219;
+  --color-dark: #18141a;
+  --grid-color: #251c28;
   --grid-size: 1.5rem;
 }
 #root {
@@ -51,9 +51,14 @@ button {
     linear-gradient(to bottom, var(--grid-color, #2d222f) 1px, transparent 1px);
   background-size: var(--grid-size, 24px) var(--grid-size, 24px);
   background-color: var(--color-dark);
+  background-attachment: fixed;
 }
 
 @utility content-width {
-  max-width: 1500px;
+  max-width: 1650px;
   margin: 0 auto;
+}
+
+@utility padding {
+  padding: 3rem 2rem;
 }

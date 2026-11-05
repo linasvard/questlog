@@ -1,7 +1,7 @@
 const HeroSection = () => {
   return (
-    <section>
-      <h1>Log your games</h1>
+    <section className="min-h-[calc(100vh-20rem)] flex justify-center items-center text-light">
+      <h1 className="content-width text-center">Log your games</h1>
     </section>
   );
 };
