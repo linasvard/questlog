@@ -3,6 +3,7 @@ import { getAllGames } from '../../api/games';
 import type { Game } from '../../types/game';
 import GameList from '../GameList';
 import HeroSection from '../HeroSection';
+import StatusFilter from '../StatusFilter';
 
 const Home = () => {
   const [games, setGames] = useState<Game[]>([]);
@@ -32,6 +33,7 @@ const Home = () => {
       </div>
 
       <section className="relative content-width z-10 min-h-screen rounded-t-3xl bg-dark p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.2)]">
+        <StatusFilter />
         <div className="p-3">
           <h2>My games</h2>
           {isLoading && <p>Laddar spel...</p>}
