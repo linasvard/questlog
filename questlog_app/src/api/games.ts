@@ -1,5 +1,5 @@
 import { API_URL } from '../config';
-import type { Game, GameStatus } from '../types/game';
+import type { Game, GameFormValues, GameStatus } from '../types/game';
 
 export type NewGame = { title: string; platform: string; status: GameStatus };
 
@@ -37,7 +37,7 @@ export const getGame = async (id: string) => {
 };
 
 // POST a new game
-export const addGame = async (game: NewGame) => {
+export const addGame = async (game: GameFormValues) => {
   const response = await fetch(`${API_URL}/games`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
