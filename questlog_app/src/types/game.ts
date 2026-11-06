@@ -25,3 +25,11 @@ export type GameFormValues = {
   coverUrl: string;
   notes: string;
 };
+
+export const STATUS_COLORS = {
+  want: 'bg-blue',
+  playing: 'bg-pink',
+  completed: 'bg-green',
+  dropped: 'bg-orange',
+  all: 'bg-yellow',
+};

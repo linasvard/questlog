@@ -48,7 +48,7 @@ const GameForm = ({
   };
   return (
     <form
-      className="grid gap-8 md:grid-cols-2 md:items-start"
+      className="content-width grid gap-8 md:grid-cols-2 md:items-start"
       onSubmit={handleSubmit}>
       <div className="flex flex-col gap-4">
         <label htmlFor="title">Title</label>
