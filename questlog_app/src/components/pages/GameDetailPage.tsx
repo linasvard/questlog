@@ -37,8 +37,7 @@ const GameDetailPage = () => {
       <div className="grid grid-cols-2 gap-4">
         <div className="w-full h-auto rounded-lg block border-[3px]  border-black bg-light text-black shadow">
           <article className="flex h-full flex-col ">
-            <div
-              className={`flex items-center justify-between gap-2 border-b-[3px] border-black px-3 py-2 ${STATUS_COLORS[game.status]}`}>
+            <div className="flex items-center justify-between gap-2 border-b-[3px] border-black px-3 py-2 bg-yellow">
               <h3 className="truncate font-bold uppercase">{game.title}</h3>
               <div className="flex shrink-0 gap-1" aria-hidden="true">
                 <span className="size-3 border-2 border-dark-alt bg-green" />
@@ -61,9 +60,14 @@ const GameDetailPage = () => {
             </div>
           </article>
         </div>
-        <div>
-          <div>GameImg2</div>
-          <div>Här kommer annan information</div>
+
+        <div className="flex flex-col gap-2">
+          <div className="flex-1 rounded-lg border-[3px] border-black bg-pink text-black shadow">
+            GameImg2
+          </div>
+          <div className="flex-1 rounded-lg border-[3px] border-black bg-green text-black shadow">
+            GameImg3
+          </div>
         </div>
       </div>
       <div>
