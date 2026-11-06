@@ -1,4 +1,4 @@
-import { STATUSES, type GameStatus } from '../types/game';
+import { STATUS_COLORS, STATUSES, type GameStatus } from '../types/game';
 
 export type Filter = GameStatus | 'all';
 
@@ -17,7 +17,7 @@ const StatusFilter = ({ active, onChange }: StatusFilterProps) => {
             type="button"
             onClick={() => onChange(filter)}
             aria-pressed={isActive}
-            className={`btn text-sm ${isActive ? 'bg-yellow' : ''}`}>
+            className={`btn text-sm ${isActive ? STATUS_COLORS[filter] : ''}`}>
             {filter === 'want' ? 'Want to play' : filter}
           </button>
         );

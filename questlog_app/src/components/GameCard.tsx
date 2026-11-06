@@ -1,29 +1,22 @@
 import { Link } from 'react-router';
-import type { Game } from '../types/game';
+import { STATUS_COLORS, type Game } from '../types/game';
 import { capitalize } from '../utils/format';
 
 type Props = { game: Game };
 
-const STATUS_COLORS = {
-  want: 'bg-blue',
-  playing: 'bg-pink',
-  completed: 'bg-green',
-  dropped: 'bg-orange',
-};
-
 const GameCard = ({ game }: Props) => {
   return (
     <Link
-      className="block w-full border-[3px] border-black bg-light text-black shadow transition-transform hover:translate-x-0.2 hover:translate-y-0.2 hover:shadow"
+      className="block w-full border-[3px]  border-black bg-light text-black shadow transition-transform hover:translate-x-0.2 hover:translate-y-0.2 hover:shadow"
       to={`/games/${game.id}`}>
-      <article className="flex h-full flex-col">
+      <article className="flex h-full flex-col ">
         <div
           className={`flex items-center justify-between gap-2 border-b-[3px] border-black px-3 py-2 ${STATUS_COLORS[game.status]}`}>
           <h3 className="truncate font-bold uppercase">{game.title}</h3>
           <div className="flex shrink-0 gap-1" aria-hidden="true">
-            <span className="size-3 border-2 border-black bg-light" />
-            <span className="size-3 border-2 border-black bg-light" />
-            <span className="size-3 border-2 border-black bg-light" />
+            <span className="size-3 border-2 border-dark-alt bg-green" />
+            <span className="size-3 border-2 border-dark-alt bg-yellow" />
+            <span className="size-3 border-2 border-dark-alt bg-red" />
           </div>
         </div>
         <div className="flex flex-1 flex-col gap-3 p-4">
@@ -58,10 +51,6 @@ const GameCard = ({ game }: Props) => {
               </span>
             )}
           </div>
-
-          {game.notes && (
-            <p className="line-clamp-2 text-sm text-black/70">{game.notes}</p>
-          )}
         </div>
       </article>
     </Link>

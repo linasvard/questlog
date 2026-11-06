@@ -35,7 +35,7 @@ const Home = () => {
       <div className="sticky top-20 z-0">
         <HeroSection />
       </div>
-      <section className="relative z-10min-h-screen rounded-t-4xl bg-dark-alt p-4">
+      <section className="relative z-10min-h-screen rounded-t-4xl bg-grid p-4">
         <h2 className="mb-4">My games</h2>
         <StatusFilter active={filter} onChange={setFilter} />
 
