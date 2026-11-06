@@ -2,11 +2,10 @@ import { useParams, Link } from 'react-router';
 import { getGame } from '../../api/games';
 import { useEffect, useState } from 'react';
 import type { Game } from '../../types/game';
-import { STATUS_COLORS } from '../../types/game';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [game, setGame] = useState<Game | null>(null);
   const [error, setError] = useState('');
 
