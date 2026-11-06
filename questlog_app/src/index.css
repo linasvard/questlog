@@ -12,7 +12,6 @@
 
   --color-purple: #4a1c7d;
   --color-pink: #eb59a0;
-  --color-pink-dark: #b13e9c;
   --color-red: #fe0000;
   --color-yellow: #f9cb13;
   --color-blue: #2884ff;
@@ -93,5 +92,22 @@ textarea {
   &:active {
     transform: translate(5px, 5px);
     box-shadow: 0 0 0 var(--color-purple);
+  }
+}
+
+@utility btn-delete {
+  @apply btn;
+  background-color: var(--color-red);
+  color: var(--color-light);
+  box-shadow: 5px 5px 0 var(--color-pink);
+
+  &:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--color-pink);
+  }
+
+  &:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 var(--color-pink);
   }
 }

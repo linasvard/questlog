@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router';
-import { getGame, updateGame } from '../../api/games';
+import { deleteGame, getGame, updateGame } from '../../api/games';
 import { useEffect, useState } from 'react';
 import { type Game, type GameFormValues } from '../../types/game';
 import GameForm from '../GameForm';
@@ -41,6 +41,16 @@ const EditGamePage = () => {
     }
   };
 
+  const handleDelete = async () => {
+    if (!gameId) return;
+    try {
+      await deleteGame(gameId);
+      navigate('/');
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : 'Unknown error');
+    }
+  };
+
   if (isLoading) return <p>Loading game...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!game) return <p>Game not found.</p>;
@@ -63,6 +73,7 @@ const EditGamePage = () => {
         submitLabel="Save"
         onSubmit={handleSave}
         onCancel={() => navigate(`/games/${gameId}`)}
+        onDelete={handleDelete}
       />
     </div>
   );

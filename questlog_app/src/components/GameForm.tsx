@@ -7,6 +7,7 @@ type GameFormProps = {
   submitLabel: string;
   onSubmit: (values: GameFormValues) => void;
   onCancel: () => void;
+  onDelete?: () => void;
 };
 
 const emptyFormValues: GameFormValues = {
@@ -23,6 +24,7 @@ const GameForm = ({
   submitLabel,
   onSubmit,
   onCancel,
+  onDelete,
 }: GameFormProps) => {
   const [title, setTitle] = useState(initialValues.title);
   const [platform, setPlatform] = useState(initialValues.platform);
@@ -129,11 +131,18 @@ const GameForm = ({
         )}
       </div>
 
-      <div className="flex gap-2">
-        <button type="submit">{submitLabel}</button>
-        <button type="button" onClick={onCancel}>
-          Cancel
-        </button>
+      <div className="flex justify-between gap-2">
+        <div className="flex gap-2">
+          <button type="submit">{submitLabel}</button>
+          <button type="button" onClick={onCancel}>
+            Cancel
+          </button>
+        </div>
+        {onDelete && (
+          <button className="btn-delete" type="button" onClick={onDelete}>
+            Delete
+          </button>
+        )}
       </div>
     </form>
   );
