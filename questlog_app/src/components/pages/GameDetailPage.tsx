@@ -35,7 +35,7 @@ const GameDetailPage = () => {
       <h1>{game.title}</h1>
       <div className="grid grid-cols-2 gap-4">
         <div className="w-full h-auto rounded-lg block border-[3px]  border-black bg-light text-black shadow">
-          <article className="flex h-full flex-col ">
+          <article className="flex h-full flex-col">
             <div className="flex items-center justify-between gap-2 border-b-[3px] border-black px-3 py-2 bg-yellow">
               <h3 className="truncate font-bold uppercase">{game.title}</h3>
               <div className="flex shrink-0 gap-1" aria-hidden="true">
@@ -65,15 +65,24 @@ const GameDetailPage = () => {
             GameImg2
           </div>
           <div className="flex-1 rounded-lg border-[3px] border-black bg-green text-black shadow">
-            GameImg3
+            <div className="flex flex-col gap-2 p-4">
+              <h2>Platform</h2>
+              <p>{game.platform}</p>
+            </div>
+            <div className="flex flex-col gap-2 p-4">
+              <h2>Notes</h2>
+              <p>{game.notes || 'No notes yet.'}</p>
+            </div>
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col gap-2 mt-4 rounded-lg border-[3px] border-black bg-blue text-black shadow p-4">
         <h2>Reviews</h2>
         <p>No reviews yet.</p>
       </div>
-      <Link to={`/games/${game.id}/edit`}>Edit Game</Link>
+      <Link className="btn" to={`/games/${game.id}/edit`}>
+        Edit
+      </Link>
     </section>
   );
 };
