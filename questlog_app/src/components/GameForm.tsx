@@ -139,7 +139,7 @@ const GameForm = ({
           </button>
         </div>
         {onDelete && (
-          <button type="button" onClick={onDelete}>
+          <button className="btn-delete" type="button" onClick={onDelete}>
             Delete
           </button>
         )}
