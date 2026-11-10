@@ -3,6 +3,7 @@ import { getGame } from '../../api/games';
 import { useEffect, useState } from 'react';
 import type { Game } from '../../types/game';
 import RetroWindow from '../RetroWindow';
+import BubbleImg from '../../assets/images/bubble.png';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -33,7 +34,7 @@ const GameDetailPage = () => {
 
   return (
     <section className="content-width">
-      <h1>{game.title}</h1>
+      <h1 className="text-center mb-5 text-xl">{game.title}</h1>
 
       <div className="grid gap-4 md:grid-cols-2">
         <RetroWindow title="Game cover" barColor="bg-yellow">
@@ -69,9 +70,19 @@ const GameDetailPage = () => {
               </div>
               <div className="aspect-square">
                 <RetroWindow title="Notes" barColor="bg-orange">
-                  <p className="min-h-0 overflow-auto">
-                    {game.notes || 'No notes yet.'}
-                  </p>
+                  <div className="flex min-h-0 flex-1 items-center justify-center">
+                    <div
+                      className="flex h-9/10 w-9/10 flex-col items-center justify-center text-center p-4 pb-10 [image-rendering:pixelated]"
+                      style={{
+                        backgroundImage: `url(${BubbleImg})`,
+                        backgroundSize: '100% 100%',
+                        backgroundRepeat: 'no-repeat',
+                      }}>
+                      <p className="min-h-0 p-2 overflow-auto font-pixel-2">
+                        {game.notes || 'No notes yet.'}
+                      </p>
+                    </div>
+                  </div>
                 </RetroWindow>
               </div>
             </div>

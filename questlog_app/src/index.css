@@ -3,6 +3,7 @@
 @theme {
   /* Font styles */
   --font-pixel: 'lores-9-plus-wide-bold-alt', sans-serif;
+  --font-pixel-2: 'lores-9-plus-wide', sans-serif;
 
   /* Color styles */
   --color-light: #faf3dc;
@@ -32,7 +33,7 @@ label {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-family: var(--font-pixel);
 }
 
@@ -44,6 +45,31 @@ textarea {
   border-radius: 4px;
   background-color: var(--color-light);
   color: var(--color-dark);
+}
+
+@utility bg-notepad {
+  --line: 1.75rem;
+
+  background-color: #fffdf3;
+  background-image:
+    linear-gradient(
+      to right,
+      transparent 2rem,
+      #f28b82 2rem,
+      #f28b82 calc(2rem + 2px),
+      transparent calc(2rem + 2px)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--line) - 1px),
+      #a8c7fa calc(var(--line) - 1px),
+      #a8c7fa var(--line)
+    );
+  background-attachment: local;
+  line-height: var(--line);
+  padding: 0 0.75rem 0 2.75rem;
+  color: #000;
 }
 
 @utility bg-grid {
