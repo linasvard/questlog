@@ -73,28 +73,43 @@ const GameForm = ({
   };
   return (
     <form
-      className="content-width grid gap-8 md:grid-cols-2 md:items-start"
+      className="content-width grid gap-4 md:grid-cols-2 md:items-start"
       onSubmit={handleSubmit}>
-      <div className="flex flex-col gap-4">
-        <label htmlFor="title">Title</label>
-        <input
-          id="title"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+      <div className="flex flex-col gap-2">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="title">Title*</label>
+            <input
+              id="title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="platform">Platform</label>
+            <input
+              id="platform"
+              type="text"
+              value={platform}
+              onChange={(e) => setPlatform(e.target.value)}
+              required
+            />
+          </div>
+        </div>
 
-        <label htmlFor="platform">Platform</label>
+        <label htmlFor="coverUrl">Cover URL</label>
         <input
-          id="platform"
-          type="text"
-          value={platform}
-          onChange={(e) => setPlatform(e.target.value)}
-          required
+          id="coverUrl"
+          type="url"
+          value={coverUrl}
+          onChange={(e) => {
+            setCoverUrl(e.target.value);
+            setImageError(false);
+          }}
         />
-
-        <label htmlFor="inGameUrl">In Game URL</label>
+        <label htmlFor="inGameUrl">Extra image (URL)</label>
         <input
           id="inGameUrl"
           type="url"
@@ -122,6 +137,7 @@ const GameForm = ({
             Add
           </button>
         </div>
+
         {categories.length > 0 && (
           <ul className="flex flex-wrap gap-2">
             {categories.map((category) => (
@@ -139,48 +155,42 @@ const GameForm = ({
             ))}
           </ul>
         )}
-
-        <label htmlFor="status">Status</label>
-        <select
-          id="status"
-          value={status}
-          onChange={(e) => setStatus(e.target.value as GameStatus)}>
-          {STATUSES.map((s) => (
-            <option key={s} value={s}>
-              {capitalize(s)}
-            </option>
-          ))}
-        </select>
-
-        <label htmlFor="rating">Rating</label>
-        <select
-          id="rating"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}>
-          <option value="">No rating</option>
-          {[1, 2, 3, 4, 5].map((n) => (
-            <option key={n} value={n}>
-              {n}
-            </option>
-          ))}
-        </select>
+        <div className="grid gap-4 grid-cols-2">
+          <div>
+            <label htmlFor="status">Status</label>
+            <select
+              id="status"
+              value={status}
+              onChange={(e) => setStatus(e.target.value as GameStatus)}>
+              {STATUSES.map((s) => (
+                <option key={s} value={s}>
+                  {capitalize(s)}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="rating">Rating</label>
+            <select
+              id="rating"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}>
+              <option value="">No rating</option>
+              {[1, 2, 3, 4, 5].map((n) => (
+                <option key={n} value={n}>
+                  {n}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
         <label htmlFor="notes">Notes</label>
         <textarea
           id="notes"
           value={notes}
+          rows={5}
           onChange={(e) => setNotes(e.target.value)}
-        />
-
-        <label htmlFor="coverUrl">Cover URL</label>
-        <input
-          id="coverUrl"
-          type="url"
-          value={coverUrl}
-          onChange={(e) => {
-            setCoverUrl(e.target.value);
-            setImageError(false);
-          }}
         />
       </div>
       <div className="flex flex-col items-center gap-2 md:col-start-2 md:row-span-2 md:row-start-1 md:self-center">
