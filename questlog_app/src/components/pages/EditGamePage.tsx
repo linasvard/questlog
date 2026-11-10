@@ -74,7 +74,7 @@ const EditGamePage = () => {
 
   return (
     <div className="p-6">
-      <h1>Edit game</h1>
+      <h1 className="content-width">Edit game</h1>
       {isLoading && <p>Loading game...</p>}
       {message && <p role="status">{message}</p>}
 

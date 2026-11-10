@@ -1,6 +1,7 @@
 import { capitalize } from '../utils/format';
 import { STATUSES, type GameFormValues, type GameStatus } from '../types/game';
 import { type SubmitEvent, useState } from 'react';
+import RetroWindow from './RetroWindow';
 
 type GameFormProps = {
   initialValues?: GameFormValues;
@@ -75,124 +76,126 @@ const GameForm = ({
     <form
       className="content-width grid gap-4 md:grid-cols-2 md:items-start"
       onSubmit={handleSubmit}>
-      <div className="flex flex-col gap-2">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="title">Title*</label>
-            <input
-              id="title"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
+      <RetroWindow title="Game details" barColor="bg-pink">
+        <div className="flex flex-col gap-1">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="title">Title*</label>
+              <input
+                id="title"
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="platform">Platform</label>
+              <input
+                id="platform"
+                type="text"
+                value={platform}
+                onChange={(e) => setPlatform(e.target.value)}
+                required
+              />
+            </div>
           </div>
-          <div>
-            <label htmlFor="platform">Platform</label>
-            <input
-              id="platform"
-              type="text"
-              value={platform}
-              onChange={(e) => setPlatform(e.target.value)}
-              required
-            />
-          </div>
-        </div>
 
-        <label htmlFor="coverUrl">Cover URL</label>
-        <input
-          id="coverUrl"
-          type="url"
-          value={coverUrl}
-          onChange={(e) => {
-            setCoverUrl(e.target.value);
-            setImageError(false);
-          }}
-        />
-        <label htmlFor="inGameUrl">Extra image (URL)</label>
-        <input
-          id="inGameUrl"
-          type="url"
-          value={inGameUrl}
-          onChange={(e) => setInGameUrl(e.target.value)}
-        />
-
-        <label htmlFor="category">Categories</label>
-        <div className="flex gap-2">
+          <label htmlFor="coverUrl">Cover URL</label>
           <input
-            id="category"
-            type="text"
-            value={categoryInput}
-            onChange={(e) => setCategoryInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault();
-                handleAddCategory();
-              }
+            id="coverUrl"
+            type="url"
+            value={coverUrl}
+            onChange={(e) => {
+              setCoverUrl(e.target.value);
+              setImageError(false);
             }}
-            placeholder="e.g. RPG"
-            className="flex-1"
           />
-          <button type="button" onClick={handleAddCategory}>
-            Add
-          </button>
-        </div>
+          <label htmlFor="inGameUrl">Extra image (URL)</label>
+          <input
+            id="inGameUrl"
+            type="url"
+            value={inGameUrl}
+            onChange={(e) => setInGameUrl(e.target.value)}
+          />
 
-        {categories.length > 0 && (
-          <ul className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <li
-                key={category}
-                className="flex items-center gap-2 border-2 border-black bg-pink px-2 py-0.5 text-sm font-bold uppercase text-black">
-                {category}
-                <button
-                  type="button"
-                  onClick={() => handleDeleteCategory(category)}
-                  aria-label={`Remove ${category}`}>
-                  ✕
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-        <div className="grid gap-4 grid-cols-2">
-          <div>
-            <label htmlFor="status">Status</label>
-            <select
-              id="status"
-              value={status}
-              onChange={(e) => setStatus(e.target.value as GameStatus)}>
-              {STATUSES.map((s) => (
-                <option key={s} value={s}>
-                  {capitalize(s)}
-                </option>
-              ))}
-            </select>
+          <label htmlFor="category">Categories</label>
+          <div className="flex gap-2">
+            <input
+              id="category"
+              type="text"
+              value={categoryInput}
+              onChange={(e) => setCategoryInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  handleAddCategory();
+                }
+              }}
+              placeholder="e.g. RPG"
+              className="flex-1"
+            />
+            <button className="btn" type="button" onClick={handleAddCategory}>
+              Add
+            </button>
           </div>
-          <div>
-            <label htmlFor="rating">Rating</label>
-            <select
-              id="rating"
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}>
-              <option value="">No rating</option>
-              {[1, 2, 3, 4, 5].map((n) => (
-                <option key={n} value={n}>
-                  {n}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
 
-        <label htmlFor="notes">Notes</label>
-        <textarea
-          id="notes"
-          value={notes}
-          rows={5}
-          onChange={(e) => setNotes(e.target.value)}
-        />
-      </div>
+          {categories.length > 0 && (
+            <ul className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <li
+                  key={category}
+                  className="flex items-center gap-2 border-2 border-black bg-pink px-2 py-0.5 text-sm font-bold uppercase text-black">
+                  {category}
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteCategory(category)}
+                    aria-label={`Remove ${category}`}>
+                    ✕
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="grid gap-4 grid-cols-2">
+            <div>
+              <label htmlFor="status">Status</label>
+              <select
+                id="status"
+                value={status}
+                onChange={(e) => setStatus(e.target.value as GameStatus)}>
+                {STATUSES.map((s) => (
+                  <option key={s} value={s}>
+                    {capitalize(s)}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="rating">Rating</label>
+              <select
+                id="rating"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}>
+                <option value="">No rating</option>
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <label htmlFor="notes">Notes</label>
+          <textarea
+            id="notes"
+            value={notes}
+            rows={5}
+            onChange={(e) => setNotes(e.target.value)}
+          />
+        </div>
+      </RetroWindow>
       <div className="flex flex-col items-center gap-2 md:col-start-2 md:row-span-2 md:row-start-1 md:self-center">
         <h2>Cover Preview</h2>
 
@@ -211,14 +214,16 @@ const GameForm = ({
       </div>
 
       <div className="flex justify-between gap-2">
-        <div className="flex gap-2">
-          <button type="submit">{submitLabel}</button>
-          <button type="button" onClick={onCancel}>
+        <div className="flex gap-4">
+          <button className="btn-submit" type="submit">
+            {submitLabel}
+          </button>
+          <button className="btn-cancel" type="button" onClick={onCancel}>
             Cancel
           </button>
         </div>
         {onDelete && (
-          <button className="btn-delete" type="button" onClick={onDelete}>
+          <button className="btn-danger" type="button" onClick={onDelete}>
             Delete
           </button>
         )}
