@@ -18,7 +18,7 @@ const RetroWindow = ({
       className={`flex h-full flex-col min-h-0 border-[3px] border-black bg-light text-black shadow ${className}`}>
       <div
         className={`flex items-center justify-between gap-2 border-b-[3px] border-black px-3 py-2 ${barColor}`}>
-        <h3 className="truncate font-bold uppercase">{title}</h3>
+        <h2 className="truncate font-bold uppercase">{title}</h2>
         <div className="flex shrink-0 gap-1" aria-hidden="true">
           <span className="size-3 border-2 border-dark-alt bg-green" />
           <span className="size-3 border-2 border-dark-alt bg-yellow" />

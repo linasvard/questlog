@@ -63,8 +63,12 @@ const GameDetailPage = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="aspect-square">
                 <RetroWindow title="Game info" barColor="bg-green">
+                  <p className="font-bold uppercase">Category</p>
                   <p className="font-bold uppercase">Platform</p>
-                  <p>{game.platform}</p>
+
+                  <p className="self-start border-2 border-black bg-yellow px-2 py-1 text-sm font-bold uppercase">
+                    {game.platform}
+                  </p>
                 </RetroWindow>
               </div>
               <div className="aspect-square">
