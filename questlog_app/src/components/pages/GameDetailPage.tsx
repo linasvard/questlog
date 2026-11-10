@@ -3,12 +3,14 @@ import { getGame } from '../../api/games';
 import { useEffect, useState } from 'react';
 import type { Game } from '../../types/game';
 import RetroWindow from '../RetroWindow';
+import { getGameExtra, type GameExtra } from '../../api/extras';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
   const [loading, setLoading] = useState(true);
   const [game, setGame] = useState<Game | null>(null);
   const [error, setError] = useState('');
+  const [extra, setExtra] = useState<GameExtra | null>(null);
 
   useEffect(() => {
     const fetchGame = async () => {
@@ -17,6 +19,12 @@ const GameDetailPage = () => {
       try {
         const data = await getGame(gameId);
         setGame(data);
+        try {
+          const extraData = await getGameExtra(gameId);
+          setExtra(extraData);
+        } catch {
+          setExtra(null);
+        }
       } catch (error) {
         setError(error instanceof Error ? error.message : 'Unknown error');
       } finally {
@@ -55,7 +63,7 @@ const GameDetailPage = () => {
             <RetroWindow title="In game" barColor="bg-pink" className="flex-1">
               <img
                 className="aspect-3/2 w-full min-h-0 flex-1 border-[3px] border-black object-cover md:aspect-auto"
-                src={game.coverUrl}
+                src={extra?.inGameUrl || game.coverUrl}
                 alt={`${game.title} in game`}
               />
             </RetroWindow>
@@ -63,9 +71,19 @@ const GameDetailPage = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="aspect-square">
                 <RetroWindow title="Game info" barColor="bg-green">
-                  <p className="font-bold uppercase">Category</p>
-                  <p className="font-bold uppercase">Platform</p>
-
+                  {extra && extra.categories.length > 0 ? (
+                    <div className="flex flex-wrap gap-1">
+                      {extra.categories.map((category) => (
+                        <span
+                          key={category}
+                          className="border-2 border-black bg-pink px-2 py-0.5 font-bold uppercase">
+                          {category}
+                        </span>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>No categories</p>
+                  )}
                   <p className="self-start border-2 border-black bg-yellow px-2 py-1 text-sm font-bold uppercase">
                     {game.platform}
                   </p>
