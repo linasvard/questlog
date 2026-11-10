@@ -17,6 +17,8 @@ const emptyFormValues: GameFormValues = {
   rating: null,
   coverUrl: '',
   notes: '',
+  categories: [],
+  inGameUrl: '',
 };
 
 const GameForm = ({
@@ -36,6 +38,25 @@ const GameForm = ({
   const [notes, setNotes] = useState(initialValues.notes);
 
   const [imageError, setImageError] = useState(false);
+  const [categories, setCategories] = useState<string[]>(
+    initialValues.categories,
+  );
+  const [categoryInput, setCategoryInput] = useState('');
+  const [inGameUrl, setInGameUrl] = useState(initialValues.inGameUrl);
+
+  const handleAddCategory = () => {
+    const newCategory = categoryInput.trim();
+    if (newCategory && !categories.includes(newCategory)) {
+      setCategories([...categories, newCategory]);
+    }
+    setCategoryInput('');
+  };
+
+  const handleDeleteCategory = (categoryToDelete: string) => {
+    setCategories(
+      categories.filter((category) => category !== categoryToDelete),
+    );
+  };
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,6 +67,8 @@ const GameForm = ({
       rating: rating ? Number(rating) : null,
       coverUrl,
       notes,
+      categories,
+      inGameUrl,
     });
   };
   return (
@@ -70,6 +93,52 @@ const GameForm = ({
           onChange={(e) => setPlatform(e.target.value)}
           required
         />
+
+        <label htmlFor="inGameUrl">In Game URL</label>
+        <input
+          id="inGameUrl"
+          type="url"
+          value={inGameUrl}
+          onChange={(e) => setInGameUrl(e.target.value)}
+        />
+
+        <label htmlFor="category">Categories</label>
+        <div className="flex gap-2">
+          <input
+            id="category"
+            type="text"
+            value={categoryInput}
+            onChange={(e) => setCategoryInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleAddCategory();
+              }
+            }}
+            placeholder="e.g. RPG"
+            className="flex-1"
+          />
+          <button type="button" onClick={handleAddCategory}>
+            Add
+          </button>
+        </div>
+        {categories.length > 0 && (
+          <ul className="flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <li
+                key={category}
+                className="flex items-center gap-2 border-2 border-black bg-pink px-2 py-0.5 text-sm font-bold uppercase text-black">
+                {category}
+                <button
+                  type="button"
+                  onClick={() => handleDeleteCategory(category)}
+                  aria-label={`Remove ${category}`}>
+                  ✕
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
 
         <label htmlFor="status">Status</label>
         <select

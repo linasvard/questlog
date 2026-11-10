@@ -24,6 +24,8 @@ export type GameFormValues = {
   rating: number | null;
   coverUrl: string;
   notes: string;
+  categories: string[];
+  inGameUrl: string;
 };
 
 export const STATUS_COLORS = {
