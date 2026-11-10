@@ -1,9 +1,11 @@
+/// <reference types="node" />
+
 import mongoose from 'mongoose';
 
 let connection: Promise<typeof mongoose> | null = null;
 
-export const connectDB = async () => {
-  if (connection) {
+export const connectDB = () => {
+  if (!connection) {
     console.log('Connecting to database...');
     connection = mongoose
       .connect(process.env.MONGODB_URL as string)
