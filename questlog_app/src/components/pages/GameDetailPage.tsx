@@ -104,12 +104,6 @@ const GameDetailPage = () => {
           </div>
         </div>
       </div>
-      <RetroWindow className="mt-4" title="Rating" barColor="bg-blue">
-        <div>
-          <h2>Reviews</h2>
-          <p>No reviews yet.</p>
-        </div>
-      </RetroWindow>
 
       <Link className="btn" to={`/games/${game.id}/edit`}>
         Edit
