@@ -1,5 +1,5 @@
-import { connectDB } from './_lib/db';
-import { GameExtra } from './_lib/GameExtra';
+import { connectDB } from './_lib/db.js';
+import { GameExtra } from './_lib/GameExtra.js';
 
 export async function GET(request: Request) {
   const gameId = new URL(request.url).searchParams.get('gameId');
