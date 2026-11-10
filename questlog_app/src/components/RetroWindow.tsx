@@ -15,7 +15,7 @@ const RetroWindow = ({
 }: RetroWindowProps) => {
   return (
     <article
-      className={`flex h-full flex-col border-[3px] border-black bg-light text-black shadow ${className}`}>
+      className={`flex h-full flex-col min-h-0 border-[3px] border-black bg-light text-black shadow ${className}`}>
       <div
         className={`flex items-center justify-between gap-2 border-b-[3px] border-black px-3 py-2 ${barColor}`}>
         <h3 className="truncate font-bold uppercase">{title}</h3>
@@ -25,7 +25,7 @@ const RetroWindow = ({
           <span className="size-3 border-2 border-dark-alt bg-red" />
         </div>
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-4">{children}</div>
+      <div className="flex flex-1 min-h-0 flex-col gap-3 p-4">{children}</div>
     </article>
   );
 };
