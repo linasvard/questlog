@@ -7,7 +7,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
         Search games
       </label>
       <input
-        className="w-full border-[3px] border-black bg-light px-3 py-3 text-sm text-black shadow-[5px_5px_0_#000] md:w-64"
+        className="w-full md:w-64"
         id="search"
         type="text"
         placeholder="Search games..."

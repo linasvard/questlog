@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router';
 const Layout = () => {
   return (
     <div className="bg-grid min-h-screen flex flex-col">
-      <header className="sticky bg-grid top-0 z-50 py-2">
+      <header className="sticky bg-grid top-0 z-50 p-2">
         <nav className="text-light flex justify-between items-center content-width">
           <NavLink className="font-pixel text-xl" to="/">
             Questlog

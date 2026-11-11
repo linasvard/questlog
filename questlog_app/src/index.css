@@ -62,6 +62,12 @@ option {
 label {
   font-family: var(--font-pixel-2);
 }
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid var(--color-pink);
+  outline-offset: 3px;
+}
 
 @utility bg-grid {
   background-image:
