@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router';
+import Footer from '../Footer';
 
 const Layout = () => {
   return (
@@ -27,6 +28,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <footer>
+        <Footer />
         <p>&copy; 2026 Questlog | Track, rate and review your games.</p>
       </footer>
     </div>
