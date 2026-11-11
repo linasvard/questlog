@@ -3,6 +3,7 @@ import { getAllGames } from '../../api/games';
 import type { Game } from '../../types/game';
 import GameList from '../GameList';
 import HeroSection from '../HeroSection';
+import SearchBar from '../SearchBar';
 import StatusFilter, { type Filter } from '../StatusFilter';
 
 const Home = () => {
@@ -10,9 +11,12 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [filter, setFilter] = useState<Filter>('all');
+  const [search, setSearch] = useState('');
 
-  const visibleGames =
-    filter === 'all' ? games : games.filter((game) => game.status === filter);
+  const searchTerm = search.toLowerCase();
+  const visibleGames = games
+    .filter((game) => filter === 'all' || game.status === filter)
+    .filter((game) => game.title.toLowerCase().includes(searchTerm));
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -37,8 +41,10 @@ const Home = () => {
       </div>
       <section className="relative z-10min-h-screen rounded-t-4xl bg-grid p-4">
         <h2 className="mb-4">My games</h2>
-        <StatusFilter active={filter} onChange={setFilter} />
-
+        <div className="flex content-width flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <StatusFilter active={filter} onChange={setFilter} />
+          <SearchBar value={search} onChange={setSearch} />
+        </div>
         <div className="mt-8">
           {isLoading && <p>Laddar spel...</p>}
           {error && <p>Något gick fel: {error}</p>}

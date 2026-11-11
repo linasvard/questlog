@@ -29,7 +29,6 @@ const GameForm = ({
   onCancel,
   onDelete,
 }: GameFormProps) => {
-  // Fälten som skickas till Questlog
   const [title, setTitle] = useState(initialValues.title);
   const [platform, setPlatform] = useState(initialValues.platform);
   const [status, setStatus] = useState<GameStatus>(initialValues.status);
@@ -89,6 +88,7 @@ const GameForm = ({
               <div className="flex flex-col gap-1">
                 <label htmlFor="title">Title*</label>
                 <input
+                  className="font-pixel-2"
                   id="title"
                   type="text"
                   value={title}
@@ -99,6 +99,7 @@ const GameForm = ({
               <div className="flex flex-col gap-1">
                 <label htmlFor="platform">Platform*</label>
                 <input
+                  className="mb-4 font-pixel-2"
                   id="platform"
                   type="text"
                   value={platform}
@@ -110,6 +111,7 @@ const GameForm = ({
 
             <label htmlFor="coverUrl">Cover image (URL)</label>
             <input
+              className="mb-4 font-pixel-2"
               id="coverUrl"
               type="url"
               value={coverUrl}
@@ -121,6 +123,7 @@ const GameForm = ({
 
             <label htmlFor="inGameUrl">Extra image (URL)</label>
             <input
+              className="font-pixel-2"
               id="inGameUrl"
               type="url"
               value={inGameUrl}
@@ -130,8 +133,10 @@ const GameForm = ({
               }}
             />
 
-            <label htmlFor="category">Categories</label>
-            <div className="flex gap-2">
+            <label className="mt-4" htmlFor="category">
+              Categories
+            </label>
+            <div className="flex gap-2 mb-4">
               <input
                 id="category"
                 type="text"
@@ -144,7 +149,7 @@ const GameForm = ({
                   }
                 }}
                 placeholder="e.g. RPG"
-                className="flex-1"
+                className="flex-1 font-pixel-2"
               />
               <button className="btn" type="button" onClick={handleAddCategory}>
                 Add
@@ -169,10 +174,11 @@ const GameForm = ({
               </ul>
             )}
 
-            <div className="grid grid-cols-2 mt-4 gap-4">
+            <div className="grid grid-cols-2 mt-4 mb-4 gap-4">
               <div className="flex flex-col gap-1">
                 <label htmlFor="status">Status</label>
                 <select
+                  className="font-pixel-2"
                   id="status"
                   value={status}
                   onChange={(e) => setStatus(e.target.value as GameStatus)}>
@@ -186,6 +192,7 @@ const GameForm = ({
               <div className="flex flex-col gap-1">
                 <label htmlFor="rating">Rating</label>
                 <select
+                  className="font-pixel-2"
                   id="rating"
                   value={rating}
                   onChange={(e) => setRating(e.target.value)}>
@@ -201,29 +208,29 @@ const GameForm = ({
 
             <label htmlFor="notes">Notes</label>
             <textarea
+              className="font-pixel-2"
               id="notes"
               value={notes}
               rows={5}
               onChange={(e) => setNotes(e.target.value)}
             />
           </div>
-        </RetroWindow>
-
-        <div className="flex justify-between gap-2">
-          <div className="flex gap-4">
-            <button className="btn-submit" type="submit">
-              {submitLabel}
-            </button>
-            <button className="btn-cancel" type="button" onClick={onCancel}>
-              Cancel
-            </button>
+          <div className="flex mt-4 mb-2 justify-between gap-2">
+            <div className="flex gap-4">
+              <button className="btn-submit" type="submit">
+                {submitLabel}
+              </button>
+              <button className="btn-cancel" type="button" onClick={onCancel}>
+                Cancel
+              </button>
+            </div>
+            {onDelete && (
+              <button className="btn-danger" type="button" onClick={onDelete}>
+                Delete
+              </button>
+            )}
           </div>
-          {onDelete && (
-            <button className="btn-danger" type="button" onClick={onDelete}>
-              Delete
-            </button>
-          )}
-        </div>
+        </RetroWindow>
       </div>
 
       <div className="order-first grid grid-cols-2 items-start gap-4 md:order-0">
@@ -237,7 +244,7 @@ const GameForm = ({
                 onError={() => setCoverError(true)}
               />
             ) : (
-              <div className="flex aspect-3/4 w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
+              <div className="font-pixel-2 flex aspect-3/4 w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
                 {coverError ? "Couldn't load the image" : 'No cover yet'}
               </div>
             )}
@@ -254,7 +261,7 @@ const GameForm = ({
                 onError={() => setInGameError(true)}
               />
             ) : (
-              <div className="flex aspect-3/4 w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
+              <div className="font-pixel-2 flex aspect-square w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
                 {inGameError ? "Couldn't load the image" : 'No extra image yet'}
               </div>
             )}
