@@ -27,8 +27,6 @@ const EditGamePage = () => {
       try {
         const data = await getGame(gameId);
         setGame(data);
-
-        // ← här: byt ut den inre try/catch mot den här
         try {
           setExtra(await getGameExtra(gameId));
         } catch {
