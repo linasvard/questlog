@@ -8,12 +8,17 @@ const Layout = () => {
           <NavLink className="font-pixel text-xl" to="/">
             Questlog
           </NavLink>
+
           <ul className="font-bold flex space-x-4">
             <li>
-              <NavLink to="/">My games</NavLink>
+              <NavLink className="btn-link-2" to="/">
+                My games
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/games/new">Add game</NavLink>
+              <NavLink className="btn-link" to="/games/new">
+                Add game
+              </NavLink>
             </li>
           </ul>
         </nav>

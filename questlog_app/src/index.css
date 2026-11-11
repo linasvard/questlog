@@ -55,12 +55,6 @@ select {
   color: var(--color-light);
 }
 
-input,
-select {
-  height: 50px;
-  margin-bottom: 20px;
-}
-
 option {
   background-color: var(--color-dark);
 }
@@ -167,5 +161,40 @@ label {
   &:active {
     transform: translate(5px, 5px);
     box-shadow: 0 0 0 var(--color-orange);
+  }
+}
+
+@utility btn-link {
+  @apply btn;
+  background-color: var(--color-yellow);
+  color: var(--color-dark);
+  box-shadow: 5px 5px 0 var(--color-orange);
+  padding: 9px 15px;
+  font-size: 0.9rem;
+
+  &:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--color-orange);
+  }
+
+  &:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 var(--color-orange);
+  }
+}
+
+@utility btn-link-2 {
+  @apply btn-link;
+
+  color: var(--color-dark);
+
+  padding: 9px 15px;
+
+  &:hover {
+    transform: translate(2px, 2px);
+  }
+
+  &:active {
+    transform: translate(5px, 5px);
   }
 }
