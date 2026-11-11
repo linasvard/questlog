@@ -29,7 +29,6 @@ const GameForm = ({
   onCancel,
   onDelete,
 }: GameFormProps) => {
-  // Fälten som skickas till Questlog
   const [title, setTitle] = useState(initialValues.title);
   const [platform, setPlatform] = useState(initialValues.platform);
   const [status, setStatus] = useState<GameStatus>(initialValues.status);
