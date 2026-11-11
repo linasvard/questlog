@@ -30,7 +30,7 @@ const GameCard = ({ game }: Props) => {
           <span className="border-2 border-black bg-yellow px-2 py-0.5 text-sm font-bold uppercase">
             {game.status === 'want' ? 'Want to play' : capitalize(game.status)}
           </span>
-          <StarRating rating={game.rating} className="size-5" />
+          <StarRating rating={game.rating} className="size-4" />
         </div>
       </RetroWindow>
     </Link>

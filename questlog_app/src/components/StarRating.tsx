@@ -1,5 +1,4 @@
 import StarFilledIcon from '../assets/icons/StarFilledIcon';
-import StarEmptyIcon from '../assets/icons/StarIcon';
 
 type StarRatingProps = {
   rating: number | null;
@@ -16,16 +15,15 @@ const StarRating = ({
 
   return (
     <span
-      className="flex text-orange gap-0.5"
+      className="flex gap-0.5"
       role="img"
       aria-label={`Rating ${rating} of ${max}`}>
-      {Array.from({ length: max }, (_, index) =>
-        index < rating ? (
-          <StarFilledIcon key={index} className={className} />
-        ) : (
-          <StarEmptyIcon key={index} className={className} />
-        ),
-      )}
+      {Array.from({ length: max }, (_, index) => (
+        <StarFilledIcon
+          key={index}
+          className={`${className} ${index < rating ? 'text-orange' : 'text-purple/25'}`}
+        />
+      ))}
     </span>
   );
 };
