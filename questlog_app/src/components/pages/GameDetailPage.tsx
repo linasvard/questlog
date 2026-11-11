@@ -17,14 +17,12 @@ const GameDetailPage = () => {
       if (!gameId) return;
       setLoading(true);
       try {
-        const data = await getGame(gameId);
+        const [data, extraData] = await Promise.all([
+          getGame(gameId),
+          getGameExtra(gameId).catch(() => null), // Ignore errors for extra data
+        ]);
         setGame(data);
-        try {
-          const extraData = await getGameExtra(gameId);
-          setExtra(extraData);
-        } catch {
-          setExtra(null);
-        }
+        setExtra(extraData);
       } catch (error) {
         setError(error instanceof Error ? error.message : 'Unknown error');
       } finally {
@@ -105,7 +103,7 @@ const GameDetailPage = () => {
         </div>
       </div>
 
-      <Link className="btn" to={`/games/${game.id}/edit`}>
+      <Link className="btn mt-4" to={`/games/${game.id}/edit`}>
         Edit
       </Link>
     </section>

@@ -27,8 +27,6 @@ const EditGamePage = () => {
       try {
         const data = await getGame(gameId);
         setGame(data);
-
-        // ← här: byt ut den inre try/catch mot den här
         try {
           setExtra(await getGameExtra(gameId));
         } catch {
@@ -74,7 +72,7 @@ const EditGamePage = () => {
 
   return (
     <div className="p-6">
-      <h1>Edit game</h1>
+      <h1 className="content-width">Edit game</h1>
       {isLoading && <p>Loading game...</p>}
       {message && <p role="status">{message}</p>}
 
