@@ -8,7 +8,11 @@ const StarIcon = ({
     viewBox="0 0 16 16"
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
+    shapeRendering="crispEdges"
+    strokeLinejoin="miter"
+    overflow="visible"
     className={className}
+    aria-hidden="true"
     {...props}>
     <polygon points="9 1 9 0 8 0 7 0 7 1 8 1 9 1" />
     <polygon points="9 3 10 3 10 2 10 1 9 1 9 2 9 3" />

@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { STATUS_COLORS, type Game } from '../types/game';
 import { capitalize } from '../utils/format';
 import RetroWindow from './RetroWindow';
+import StarRating from './StarRating';
 
 type Props = { game: Game };
 
@@ -29,16 +30,7 @@ const GameCard = ({ game }: Props) => {
           <span className="border-2 border-black bg-yellow px-2 py-0.5 text-sm font-bold uppercase">
             {game.status === 'want' ? 'Want to play' : capitalize(game.status)}
           </span>
-          {game.rating !== null && (
-            <span
-              className="font-bold"
-              aria-label={`Rating ${game.rating} of 5`}>
-              {'★'.repeat(game.rating)}
-              <span className="text-black/20">
-                {'★'.repeat(5 - game.rating)}
-              </span>
-            </span>
-          )}
+          <StarRating rating={game.rating} className="size-5" />
         </div>
       </RetroWindow>
     </Link>
