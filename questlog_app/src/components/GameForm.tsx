@@ -99,6 +99,7 @@ const GameForm = ({
               <div className="flex flex-col gap-1">
                 <label htmlFor="platform">Platform*</label>
                 <input
+                  className="mb-4"
                   id="platform"
                   type="text"
                   value={platform}
@@ -110,6 +111,7 @@ const GameForm = ({
 
             <label htmlFor="coverUrl">Cover image (URL)</label>
             <input
+              className="mb-4"
               id="coverUrl"
               type="url"
               value={coverUrl}
@@ -131,7 +133,7 @@ const GameForm = ({
             />
 
             <label htmlFor="category">Categories</label>
-            <div className="flex gap-2">
+            <div className="flex gap-2 mb-4">
               <input
                 id="category"
                 type="text"
@@ -169,7 +171,7 @@ const GameForm = ({
               </ul>
             )}
 
-            <div className="grid grid-cols-2 mt-4 gap-4">
+            <div className="grid grid-cols-2 mb-4 gap-4">
               <div className="flex flex-col gap-1">
                 <label htmlFor="status">Status</label>
                 <select
