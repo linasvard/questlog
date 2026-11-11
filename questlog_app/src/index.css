@@ -30,8 +30,7 @@
 
 label {
   display: block;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
+  margin-bottom: 5px;
 }
 
 h1 {
@@ -54,6 +53,7 @@ select {
 input,
 select {
   height: 50px;
+  margin-bottom: 20px;
 }
 
 option {
