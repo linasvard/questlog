@@ -7,7 +7,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
         Search games
       </label>
       <input
-        className="w-full md:w-64"
+        className="w-full md:w-64 font-pixel-2"
         id="search"
         type="text"
         placeholder="Search games..."

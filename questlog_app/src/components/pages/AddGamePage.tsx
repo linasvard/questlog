@@ -25,7 +25,7 @@ const AddGamePage = () => {
   };
   return (
     <div className="p-6">
-      <h1>Add game</h1>
+      <h1 className="content-width">Add game</h1>
       {message && <p role="status">❌ {message}</p>}
       <GameForm
         submitLabel="Add game"
