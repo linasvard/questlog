@@ -93,6 +93,10 @@ select:focus {
   box-shadow: 5px 5px 0 var(--color-purple);
 }
 
+@utility shadow-blue {
+  box-shadow: 5px 5px 0 var(--color-blue);
+}
+
 @utility btn {
   display: inline-flex;
   align-items: center;
@@ -205,4 +209,15 @@ select:focus {
   &:active {
     transform: translate(5px, 5px);
   }
+}
+
+.cls-3 {
+  fill: var(--color-yellow);
+}
+.cls-2 {
+  fill: var(--color-purple);
+}
+
+.cls-1 {
+  fill: var(--color-dark);
 }
