@@ -93,6 +93,10 @@ select:focus {
   box-shadow: 5px 5px 0 var(--color-purple);
 }
 
+@utility shadow-blue {
+  box-shadow: 5px 5px 0 var(--color-blue);
+}
+
 @utility btn {
   display: inline-flex;
   align-items: center;
@@ -195,14 +199,27 @@ select:focus {
   @apply btn-link;
 
   color: var(--color-dark);
-
+  box-shadow: 5px 5px 0 var(--color-purple);
   padding: 9px 15px;
 
   &:hover {
     transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--color-purple);
   }
 
   &:active {
     transform: translate(5px, 5px);
+    box-shadow: 0 0 0 var(--color-purple);
   }
+}
+
+.cls-3 {
+  fill: var(--color-yellow);
+}
+.cls-2 {
+  fill: var(--color-purple);
+}
+
+.cls-1 {
+  fill: var(--color-dark);
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import type { Game } from '../../types/game';
 import RetroWindow from '../RetroWindow';
 import { getGameExtra, type GameExtra } from '../../api/extras';
+import StarRating from '../StarRating';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -85,6 +86,9 @@ const GameDetailPage = () => {
                   <p className="self-start border-2 border-black bg-yellow px-2 py-1 text-sm font-bold uppercase">
                     {game.platform}
                   </p>
+                  <div className="mt-auto mb-2">
+                    <StarRating rating={game.rating} className="size-8" />
+                  </div>
                 </RetroWindow>
               </div>
               <div className="aspect-square">
