@@ -1,5 +1,5 @@
-import { Link } from 'react-router';
 import LogoFooter from '../assets/icons/logo_questlog.svg';
+import NavLinks from './NavLinks';
 
 const Footer = () => {
   return (
@@ -19,13 +19,8 @@ const Footer = () => {
 
         <nav
           aria-label="Footer"
-          className="flex gap-4 md:col-start-2 md:row-start-2 md:self-end md:justify-self-end">
-          <Link to="/" className="btn text-sm">
-            My games
-          </Link>
-          <Link to="/games/new" className="btn bg-lime text-sm">
-            Add game
-          </Link>
+          className="flex md:col-start-2 md:row-start-2 md:self-end md:justify-self-end">
+          <NavLinks linkClassName="btn-link-2" />
         </nav>
       </div>
     </footer>

@@ -45,7 +45,7 @@ const Home = () => {
           <SearchBar value={search} onChange={setSearch} />
         </div>
         <h2 className="content-width mt-7 font-pixel text-xl">My games</h2>
-        <div className="mt-0">
+        <div className="mt-0 mb-10">
           {isLoading && <p>Laddar spel...</p>}
           {error && <p>Något gick fel: {error}</p>}
           {!isLoading && !error && <GameList games={visibleGames} />}

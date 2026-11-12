@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from 'react-router';
 import Footer from '../Footer';
 import QuestlogLogoH from '../../assets/icons/QuestlogLogoS';
+import NavLinks from '../NavLinks';
 
 const Layout = () => {
   return (
@@ -16,21 +17,7 @@ const Layout = () => {
             />
           </NavLink>
 
-          <ul className="font-bold flex space-x-8">
-            <li>
-              <NavLink className="btn-link-2" to="/">
-                My games
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="btn-link" to="/games/new">
-                <span aria-hidden="true" className="-mr-4">
-                  +
-                </span>
-                Add game
-              </NavLink>
-            </li>
-          </ul>
+          <NavLinks />
         </nav>
       </header>
       <main className="flex-1">
