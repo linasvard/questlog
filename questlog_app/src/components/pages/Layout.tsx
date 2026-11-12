@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router';
+import { NavLink, Outlet, ScrollRestoration } from 'react-router';
 import Footer from '../Footer';
 import QuestlogLogoH from '../../assets/icons/QuestlogLogoS';
 import NavLinks from '../NavLinks';
@@ -6,6 +6,7 @@ import NavLinks from '../NavLinks';
 const Layout = () => {
   return (
     <div className="bg-grid min-h-screen flex flex-col">
+      <ScrollRestoration />
       <header className="sticky bg-grid top-0 z-50 p-2">
         <nav className="text-light flex justify-between items-center content-width">
           <NavLink
