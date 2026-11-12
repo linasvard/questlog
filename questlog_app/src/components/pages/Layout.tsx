@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from 'react-router';
 import Footer from '../Footer';
-import QuestlogLogoH from '../../assets/icons/QuestlogLogoH';
+import QuestlogLogoH from '../../assets/icons/QuestlogLogoS';
 
 const Layout = () => {
   return (
