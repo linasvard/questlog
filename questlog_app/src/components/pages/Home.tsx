@@ -39,13 +39,13 @@ const Home = () => {
       <div className="sticky top-20 z-0">
         <HeroSection />
       </div>
-      <section className="relative z-10min-h-screen rounded-t-4xl bg-grid p-4">
-        <h2 className="mb-4">My games</h2>
-        <div className="flex content-width flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <section className="relative z-10 min-h-screen rounded-t-4xl bg-grid p-4">
+        <div className="flex content-width mt-8 flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <StatusFilter active={filter} onChange={setFilter} />
           <SearchBar value={search} onChange={setSearch} />
         </div>
-        <div className="mt-8">
+        <h2 className="content-width mt-7 font-pixel text-xl">My games</h2>
+        <div className="mt-0">
           {isLoading && <p>Laddar spel...</p>}
           {error && <p>Något gick fel: {error}</p>}
           {!isLoading && !error && <GameList games={visibleGames} />}
