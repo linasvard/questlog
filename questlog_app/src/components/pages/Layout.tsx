@@ -18,6 +18,9 @@ const Layout = () => {
             </li>
             <li>
               <NavLink className="btn-link" to="/games/new">
+                <span aria-hidden="true" className="-mr-4">
+                  +
+                </span>
                 Add game
               </NavLink>
             </li>
