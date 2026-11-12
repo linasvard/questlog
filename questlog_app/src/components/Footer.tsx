@@ -1,10 +1,34 @@
+import { Link } from 'react-router';
+import LogoFooter from '../assets/icons/logo_questlog.svg';
+
 const Footer = () => {
   return (
-    <div className="grid-cols-4">
-      <p className="text-center text-sm text-light/50">
-        &copy; 2026 Questlog | Track, rate and review your games.
-      </p>
-    </div>
+    <footer className="bg-pink px-4 py-8 text-dark md:px-8">
+      <div className="content-width grid gap-8 md:grid-cols-2 md:grid-rows-[auto_auto] md:gap-y-16">
+        <p className="font-bold md:col-start-2 md:row-start-1 md:text-right">
+          &copy; 2026 Questlog. All rights reserved.
+          <br />
+          Track, rate and review your games.
+        </p>
+
+        <img
+          src={LogoFooter}
+          alt="Questlog"
+          className="h-auto w-full md:col-start-1 md:row-start-2 md:w-120 md:self-end"
+        />
+
+        <nav
+          aria-label="Footer"
+          className="flex gap-4 md:col-start-2 md:row-start-2 md:self-end md:justify-self-end">
+          <Link to="/" className="btn text-sm">
+            My games
+          </Link>
+          <Link to="/games/new" className="btn bg-lime text-sm">
+            Add game
+          </Link>
+        </nav>
+      </div>
+    </footer>
   );
 };
 
