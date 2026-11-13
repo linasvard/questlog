@@ -39,7 +39,7 @@ const GameDetailPage = () => {
   if (!game) return <p>Game not found.</p>;
 
   return (
-    <section className="content-width">
+    <section className="content-width px-5 md:px-2">
       <h1 className="text-center content-width mb-5 text-xl">{game.title}</h1>
 
       <div className="grid gap-6 md:grid-cols-2">
