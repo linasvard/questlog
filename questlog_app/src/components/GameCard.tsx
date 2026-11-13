@@ -3,6 +3,7 @@ import { STATUS_COLORS, type Game } from '../types/game';
 import { capitalize } from '../utils/format';
 import RetroWindow from './RetroWindow';
 import StarRating from './StarRating';
+import Badge from './Badge';
 
 type Props = { game: Game };
 
@@ -27,9 +28,9 @@ const GameCard = ({ game }: Props) => {
         <p className="font-semibold uppercase">{game.platform}</p>
 
         <div className="flex items-center justify-between">
-          <span className="border-2 border-black bg-yellow px-2 py-0.5 text-md font-bold uppercase">
+          <Badge color="bg-yellow">
             {game.status === 'want' ? 'Want to play' : capitalize(game.status)}
-          </span>
+          </Badge>
           <StarRating rating={game.rating} className="size-4" />
         </div>
       </RetroWindow>

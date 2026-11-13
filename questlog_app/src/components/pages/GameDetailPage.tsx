@@ -4,6 +4,7 @@ import RetroWindow from '../RetroWindow';
 import StarRating from '../StarRating';
 import { STATUS_COLORS } from '../../types/game';
 import EditIcon from '../../assets/icons/EditIcon';
+import Badge from '../Badge';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -49,21 +50,19 @@ const GameDetailPage = () => {
               <div className="md:aspect-square aspect-auto font-bold text-md">
                 <RetroWindow title="Game info" barColor="bg-green">
                   {extra && extra.categories.length > 0 ? (
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-2">
                       {extra.categories.map((category) => (
-                        <span
-                          key={category}
-                          className="border-2 border-black bg-pink px-2 py-0.5 font-bold uppercase">
+                        <Badge key={category} color="bg-pink">
                           {category}
-                        </span>
+                        </Badge>
                       ))}
                     </div>
                   ) : (
                     <p>No categories</p>
                   )}
-                  <p className="self-start border-2 border-black bg-yellow px-2 py-1 font-bold uppercase">
+                  <Badge color="bg-yellow" className="self-start mb-3 mt-1">
                     {game.platform}
-                  </p>
+                  </Badge>
                   <div className="mt-auto mb-2">
                     <StarRating rating={game.rating} className="size-8" />
                   </div>
