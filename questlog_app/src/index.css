@@ -182,7 +182,7 @@ select:focus {
   color: var(--color-dark);
   box-shadow: 5px 5px 0 var(--color-orange);
   padding: 9px 15px;
-  font-size: 0.9rem;
+  font-size: 1rem;
 
   &:hover {
     transform: translate(2px, 2px);

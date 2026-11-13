@@ -6,6 +6,7 @@ import RetroWindow from '../RetroWindow';
 import { getGameExtra, type GameExtra } from '../../api/extras';
 import StarRating from '../StarRating';
 import { STATUS_COLORS } from '../../types/game';
+import EditIcon from '../../assets/icons/EditIcon';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -111,9 +112,12 @@ const GameDetailPage = () => {
         </div>
       </div>
 
-      <div className="my-6 mt-8 flex justify-center md:justify-end">
-        <Link className="btn" to={`/games/${game.id}/edit`}>
-          Edit game
+      <div className="my-6 mt-8 flex md:justify-between">
+        <Link className="btn mr-4" to="/">
+          ← Back to list
+        </Link>
+        <Link className="btn-link" to={`/games/${game.id}/edit`}>
+          <EditIcon className="w-5 h-5 -mr-2.5" /> Edit game
         </Link>
       </div>
     </section>
