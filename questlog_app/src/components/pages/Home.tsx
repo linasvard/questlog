@@ -1,14 +1,14 @@
-import { useState } from 'react';
 import GameList from '../GameList';
 import HeroSection from '../HeroSection';
 import SearchBar from '../SearchBar';
 import StatusFilter, { type Filter } from '../StatusFilter';
 import { useGames } from '../../hooks/useGames';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const Home = () => {
   const { games, isLoading, error } = useGames();
-  const [filter, setFilter] = useState<Filter>('all');
-  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useLocalStorage<Filter>('statusFilter', 'all');
+  const [search, setSearch] = useLocalStorage<string>('searchTerm', '');
 
   const searchTerm = search.trim().toLowerCase();
   const visibleGames = games
