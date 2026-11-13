@@ -38,14 +38,12 @@ const GameForm = ({
   const [coverUrl, setCoverUrl] = useState(initialValues.coverUrl);
   const [notes, setNotes] = useState(initialValues.notes);
 
-  // Fälten som skickas till vårt eget API
   const [categories, setCategories] = useState<string[]>(
     initialValues.categories,
   );
   const [categoryInput, setCategoryInput] = useState('');
   const [inGameUrl, setInGameUrl] = useState(initialValues.inGameUrl);
 
-  // Ett fel-state per bild, så att en trasig länk inte påverkar den andra
   const [coverError, setCoverError] = useState(false);
   const [inGameError, setInGameError] = useState(false);
 
@@ -79,12 +77,12 @@ const GameForm = ({
 
   return (
     <form
-      className="content-width grid gap-4 md:grid-cols-2 md:items-start"
+      className="content-width grid gap-6 mb-6 md:grid-cols-2 md:items-start"
       onSubmit={handleSubmit}>
       <div className="flex flex-col gap-4">
-        <RetroWindow title="Game details" barColor="bg-pink">
+        <RetroWindow className="mb-2" title="Game details" barColor="bg-pink">
           <div className="flex flex-col gap-1">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="flex flex-col gap-1">
                 <label htmlFor="title">Title*</label>
                 <input
@@ -216,7 +214,7 @@ const GameForm = ({
             />
           </div>
           <div className="flex mt-4 mb-2 justify-between gap-2">
-            <div className="flex gap-4">
+            <div className="flex gap-6">
               <button className="btn-submit" type="submit">
                 {submitLabel}
               </button>
@@ -233,7 +231,7 @@ const GameForm = ({
         </RetroWindow>
       </div>
 
-      <div className="order-first grid grid-cols-2 items-start gap-4 md:order-0">
+      <div className="order-first grid grid-cols-1 sm:grid-cols-2 items-start gap-4 md:order-0">
         <div>
           <RetroWindow title="Cover image preview" barColor="bg-blue">
             {coverUrl && !coverError ? (
@@ -244,7 +242,7 @@ const GameForm = ({
                 onError={() => setCoverError(true)}
               />
             ) : (
-              <div className="font-pixel-2 flex aspect-3/4 w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
+              <div className="font-pixel-2 flex aspect-2/1 sm:aspect-square lg:aspect-3/4 w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
                 {coverError ? "Couldn't load the image" : 'No cover yet'}
               </div>
             )}
@@ -261,7 +259,7 @@ const GameForm = ({
                 onError={() => setInGameError(true)}
               />
             ) : (
-              <div className="font-pixel-2 flex aspect-square w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
+              <div className="font-pixel-2 flex aspect-2/1 sm:aspect-square lg:aspect-3/4 w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
                 {inGameError ? "Couldn't load the image" : 'No extra image yet'}
               </div>
             )}

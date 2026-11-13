@@ -5,6 +5,7 @@ import type { Game } from '../../types/game';
 import RetroWindow from '../RetroWindow';
 import { getGameExtra, type GameExtra } from '../../api/extras';
 import StarRating from '../StarRating';
+import { STATUS_COLORS } from '../../types/game';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -39,10 +40,13 @@ const GameDetailPage = () => {
   if (!game) return <p>Game not found.</p>;
 
   return (
-    <section className="content-width">
-      <h1 className="text-center content-width mb-5 text-xl">{game.title}</h1>
+    <section className="content-width px-5 md:px-2">
+      <h1
+        className={`text-center text-xl uppercase p-3 ${STATUS_COLORS[game.status]} shadow border-[3px] border-dark text-heading mb-5`}>
+        {game.title}
+      </h1>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         <RetroWindow title="Game cover" barColor="bg-yellow">
           {game.coverUrl ? (
             <img
@@ -58,7 +62,7 @@ const GameDetailPage = () => {
         </RetroWindow>
 
         <div className="relative">
-          <div className="flex flex-col gap-4 md:absolute md:inset-0">
+          <div className="flex flex-col gap-6 md:absolute md:inset-0">
             <RetroWindow title="In game" barColor="bg-pink" className="flex-1">
               <img
                 className="aspect-3/2 w-full min-h-0 flex-1 border-[3px] border-black object-cover md:aspect-auto"
@@ -67,8 +71,8 @@ const GameDetailPage = () => {
               />
             </RetroWindow>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-square">
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+              <div className="md:aspect-square aspect-auto">
                 <RetroWindow title="Game info" barColor="bg-green">
                   {extra && extra.categories.length > 0 ? (
                     <div className="flex flex-wrap gap-1">
@@ -91,10 +95,10 @@ const GameDetailPage = () => {
                   </div>
                 </RetroWindow>
               </div>
-              <div className="aspect-square">
+              <div className="md:aspect-square aspect-auto">
                 <RetroWindow title="Notes" barColor="bg-orange">
                   <div className="flex min-h-0 flex-1 items-center justify-center">
-                    <div className="flex flex-col items-center justify-center text-center p-4 pb-11">
+                    <div className="flex flex-col items-center justify-center text-center p-4 pb-5 md:pb-11">
                       <p className="min-h-0 p-2 overflow-auto font-pixel-2">
                         {game.notes || 'No notes yet.'}
                       </p>
@@ -107,9 +111,11 @@ const GameDetailPage = () => {
         </div>
       </div>
 
-      <Link className="btn mt-4" to={`/games/${game.id}/edit`}>
-        Edit
-      </Link>
+      <div className="my-6 mt-8 flex justify-center md:justify-end">
+        <Link className="btn" to={`/games/${game.id}/edit`}>
+          Edit game
+        </Link>
+      </div>
     </section>
   );
 };

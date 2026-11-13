@@ -7,13 +7,15 @@ const GameList = ({ games }: Props) => {
   if (games.length === 0) return <p>No games yet.</p>;
 
   return (
-    <ul className="content-width grid gap-9 md:grid-cols-2 lg:grid-cols-3">
-      {games.map((game) => (
-        <li key={game.id}>
-          <GameCard game={game} />
-        </li>
-      ))}
-    </ul>
+    <div className="content-width">
+      <ul className="grid grid-cols-1 gap-8 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {games.map((game) => (
+          <li key={game.id} className="min-w-0">
+            <GameCard game={game} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

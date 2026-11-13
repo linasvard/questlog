@@ -22,6 +22,7 @@
   --color-orange: #f99026;
   --grid-size: 1.5rem;
 }
+
 #root {
   font-family: 'abadi', sans-serif;
   color: var(--color-light);
@@ -34,8 +35,7 @@ label {
 }
 
 h1 {
-  font-size: 2.5rem;
-  font-family: var(--font-pixel);
+  color: var(--color-dark);
   margin-bottom: 20px;
 }
 
