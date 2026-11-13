@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-pink px-4 mt-0 py-8 text-dark md:px-8">
       <div className="content-width grid gap-8 md:grid-cols-2 md:grid-rows-[auto_auto] md:gap-y-16">
-        <p className="font-bold md:col-start-2 md:row-start-1 md:text-right">
+        <p className="font-pixel-2 md:col-start-2 md:row-start-1 md:text-right">
           &copy; 2026 Questlog. All rights reserved.
           <br />
           Track, rate and review your games.

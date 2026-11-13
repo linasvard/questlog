@@ -8,7 +8,7 @@ const GameList = ({ games }: Props) => {
 
   return (
     <div className="content-width">
-      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-8 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {games.map((game) => (
           <li key={game.id} className="min-w-0">
             <GameCard game={game} />
