@@ -1,42 +1,15 @@
 import { useParams, Link } from 'react-router';
-import { getGame } from '../../api/games';
-import { useEffect, useState } from 'react';
-import type { Game } from '../../types/game';
+import { useGame } from '../../hooks/useGame';
 import RetroWindow from '../RetroWindow';
-import { getGameExtra, type GameExtra } from '../../api/extras';
 import StarRating from '../StarRating';
 import { STATUS_COLORS } from '../../types/game';
 import EditIcon from '../../assets/icons/EditIcon';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
-  const [loading, setLoading] = useState(true);
-  const [game, setGame] = useState<Game | null>(null);
-  const [error, setError] = useState('');
-  const [extra, setExtra] = useState<GameExtra | null>(null);
+  const { game, extra, isLoading, error } = useGame(gameId);
 
-  useEffect(() => {
-    const fetchGame = async () => {
-      if (!gameId) return;
-      setLoading(true);
-      try {
-        const [data, extraData] = await Promise.all([
-          getGame(gameId),
-          getGameExtra(gameId).catch(() => null), // Ignore errors for extra data
-        ]);
-        setGame(data);
-        setExtra(extraData);
-      } catch (error) {
-        setError(error instanceof Error ? error.message : 'Unknown error');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchGame();
-  }, [gameId]);
-
-  if (loading) return <p>Loading game...</p>;
+  if (isLoading) return <p>Loading game...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!game) return <p>Game not found.</p>;
 
@@ -88,7 +61,7 @@ const GameDetailPage = () => {
                   ) : (
                     <p>No categories</p>
                   )}
-                  <p className="self-start border-2 border-black bg-yellow px-2 py-1font-bold uppercase">
+                  <p className="self-start border-2 border-black bg-yellow px-2 py-1 font-bold uppercase">
                     {game.platform}
                   </p>
                   <div className="mt-auto mb-2">
