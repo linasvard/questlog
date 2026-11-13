@@ -24,7 +24,7 @@ const Layout = () => {
       <main className="flex-1">
         <Outlet />
       </main>
-      <footer>
+      <footer className="z-20">
         <Footer />
       </footer>
     </div>

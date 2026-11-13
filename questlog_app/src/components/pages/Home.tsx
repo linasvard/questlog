@@ -36,16 +36,16 @@ const Home = () => {
 
   return (
     <div>
-      <div className="sticky top-20 z-0">
+      <div className="sticky top-[14%] z-0">
         <HeroSection />
       </div>
       <section className="relative z-10 min-h-screen rounded-t-4xl bg-grid p-4">
-        <div className="flex content-width mt-8 flex-col gap-10 md:flex-row md:items-center md:justify-between">
+        <div className="flex content-width mt-5 flex-col gap-10 md:flex-row md:items-center md:justify-between">
           <StatusFilter active={filter} onChange={setFilter} />
           <SearchBar value={search} onChange={setSearch} />
         </div>
         <h2 className="content-width mt-7 font-pixel text-xl">My games</h2>
-        <div className="mt-0 mb-10">
+        <div className="mt-0 mb-30">
           {isLoading && <p>Laddar spel...</p>}
           {error && <p>Något gick fel: {error}</p>}
           {!isLoading && !error && <GameList games={visibleGames} />}
