@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <div className="bg-grid min-h-screen flex flex-col">
       <ScrollRestoration />
-      <header className="sticky bg-grid top-0 z-50 p-2">
+      <header className="sticky md:static bg-grid top-0 z-50 p-2">
         <nav className="text-light flex justify-between items-center content-width">
           <NavLink
             className="inline-flex items-center justify-center border-3 border-dark bg-pink p-1 shadow-blue md:p-2"
