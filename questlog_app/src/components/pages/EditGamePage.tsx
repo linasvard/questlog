@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { type GameFormValues } from '../../types/game';
 import GameForm from '../GameForm';
 import { useGame } from '../../hooks/useGame';
+import Loader from '../Loader';
 
 const EditGamePage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -38,7 +39,7 @@ const EditGamePage = () => {
     }
   };
 
-  if (isLoading) return <p>Loading game...</p>;
+  if (isLoading) return <Loader label="Loading game..." />;
   if (error) return <p>Error: {error}</p>;
   if (!game) return <p>Game not found.</p>;
 

@@ -6,12 +6,18 @@ import { STATUS_COLORS } from '../../types/game';
 import EditIcon from '../../assets/icons/EditIcon';
 import Badge from '../Badge';
 import ImagePlaceholder from '../ImagePlaceholder';
+import Loader from '../Loader';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
   const { game, extra, isLoading, error } = useGame(gameId);
 
-  if (isLoading) return <p>Loading game...</p>;
+  if (isLoading)
+    return (
+      <div className="min-h-[calc(100vh-10rem)] flex items-center justify-center">
+        <Loader label="Loading game..." />
+      </div>
+    );
   if (error) return <p>Error: {error}</p>;
   if (!game) return <p>Game not found.</p>;
 
