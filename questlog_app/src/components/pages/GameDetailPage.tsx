@@ -5,6 +5,7 @@ import type { Game } from '../../types/game';
 import RetroWindow from '../RetroWindow';
 import { getGameExtra, type GameExtra } from '../../api/extras';
 import StarRating from '../StarRating';
+import { STATUS_COLORS } from '../../types/game';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -40,7 +41,8 @@ const GameDetailPage = () => {
 
   return (
     <section className="content-width px-5 md:px-2">
-      <h1 className="text-center text-pink text-heading content-width mb-5 text-xl">
+      <h1
+        className={`text-center text-xl uppercase p-3 ${STATUS_COLORS[game.status]} shadow border-[3px] border-dark text-heading mb-5`}>
         {game.title}
       </h1>
 
