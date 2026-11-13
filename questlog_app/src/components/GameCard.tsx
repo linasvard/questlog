@@ -4,6 +4,7 @@ import { capitalize } from '../utils/format';
 import RetroWindow from './RetroWindow';
 import StarRating from './StarRating';
 import Badge from './Badge';
+import ImagePlaceholder from './ImagePlaceholder';
 
 type Props = { game: Game };
 
@@ -20,9 +21,7 @@ const GameCard = ({ game }: Props) => {
             alt={`${game.title} cover`}
           />
         ) : (
-          <div className="flex aspect-3/4 w-full items-center justify-center border-[3px] border-dashed border-black/40 text-black/50">
-            No cover
-          </div>
+          <ImagePlaceholder />
         )}
 
         <p className="font-semibold uppercase">{game.platform}</p>

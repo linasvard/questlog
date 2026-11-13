@@ -5,6 +5,7 @@ import StarRating from '../StarRating';
 import { STATUS_COLORS } from '../../types/game';
 import EditIcon from '../../assets/icons/EditIcon';
 import Badge from '../Badge';
+import ImagePlaceholder from '../ImagePlaceholder';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -30,20 +31,25 @@ const GameDetailPage = () => {
               alt={`${game.title} cover`}
             />
           ) : (
-            <div className="flex aspect-3/4 w-full items-center justify-center border-[3px] border-dashed border-black/40 text-black/50">
-              No cover
-            </div>
+            <ImagePlaceholder />
           )}
         </RetroWindow>
 
         <div className="relative">
           <div className="flex flex-col gap-6 md:absolute md:inset-0">
             <RetroWindow title="In game" barColor="bg-pink" className="flex-1">
-              <img
-                className="aspect-3/2 w-full min-h-0 flex-1 border-[3px] border-black object-cover md:aspect-auto"
-                src={extra?.inGameUrl || game.coverUrl}
-                alt={`${game.title} in game`}
-              />
+              {extra?.inGameUrl ? (
+                <img
+                  className="aspect-3/2 min-h-0 w-full flex-1 border-[3px] border-black object-cover md:aspect-auto"
+                  src={extra.inGameUrl}
+                  alt={`${game.title} in game`}
+                />
+              ) : (
+                <ImagePlaceholder
+                  text="No in-game image"
+                  className="aspect-3/2 min-h-0 flex-1 md:aspect-auto"
+                />
+              )}
             </RetroWindow>
 
             <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
