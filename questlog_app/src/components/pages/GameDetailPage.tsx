@@ -73,7 +73,7 @@ const GameDetailPage = () => {
             </RetroWindow>
 
             <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
-              <div className="md:aspect-square aspect-auto">
+              <div className="md:aspect-square aspect-auto font-bold text-md">
                 <RetroWindow title="Game info" barColor="bg-green">
                   {extra && extra.categories.length > 0 ? (
                     <div className="flex flex-wrap gap-1">
@@ -88,7 +88,7 @@ const GameDetailPage = () => {
                   ) : (
                     <p>No categories</p>
                   )}
-                  <p className="self-start border-2 border-black bg-yellow px-2 py-1 text-sm font-bold uppercase">
+                  <p className="self-start border-2 border-black bg-yellow px-2 py-1font-bold uppercase">
                     {game.platform}
                   </p>
                   <div className="mt-auto mb-2">
@@ -112,12 +112,13 @@ const GameDetailPage = () => {
         </div>
       </div>
 
-      <div className="my-6 mt-8 flex md:justify-between">
+      <div className="my-6 mt-8 flex justify-between">
         <Link className="btn mr-4" to="/">
-          ← Back to list
+          ← Go back
         </Link>
         <Link className="btn-link" to={`/games/${game.id}/edit`}>
-          <EditIcon className="w-5 h-5 -mr-2.5" /> Edit game
+          <EditIcon aria-hidden="true" className="w-4.5 h-auto -mr-2.5" /> Edit
+          game
         </Link>
       </div>
     </section>

@@ -27,7 +27,7 @@ const GameCard = ({ game }: Props) => {
         <p className="font-semibold uppercase">{game.platform}</p>
 
         <div className="flex items-center justify-between">
-          <span className="border-2 border-black bg-yellow px-2 py-0.5 text-sm font-bold uppercase">
+          <span className="border-2 border-black bg-yellow px-2 py-0.5 text-md font-bold uppercase">
             {game.status === 'want' ? 'Want to play' : capitalize(game.status)}
           </span>
           <StarRating rating={game.rating} className="size-4" />
