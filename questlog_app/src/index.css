@@ -224,3 +224,9 @@ select:focus {
 .cls-1 {
   fill: var(--color-dark);
 }
+
+@utility text-heading {
+  -webkit-text-stroke: 5px var(--color-dark);
+  paint-order: stroke fill;
+  text-shadow: 4px 4px 0 var(--color-purple);
+}

@@ -40,7 +40,9 @@ const GameDetailPage = () => {
 
   return (
     <section className="content-width px-5 md:px-2">
-      <h1 className="text-center content-width mb-5 text-xl">{game.title}</h1>
+      <h1 className="text-center text-pink text-heading content-width mb-5 text-xl">
+        {game.title}
+      </h1>
 
       <div className="grid gap-6 md:grid-cols-2">
         <RetroWindow title="Game cover" barColor="bg-yellow">
