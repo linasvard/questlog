@@ -44,8 +44,12 @@ const EditGamePage = () => {
   if (!game) return <p>Game not found.</p>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-center content-width">Edit game</h1>
+    <div className="content-width">
+      <h1
+        className="text-center text-xl uppercase p-3
+bg-light shadow border-[3px] border-dark text-heading mb-5">
+        Edit game
+      </h1>
       {message && <p role="status">❌ {message}</p>}
 
       <GameForm

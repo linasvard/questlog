@@ -75,7 +75,7 @@ const GameForm = ({
 
   return (
     <form
-      className="content-width grid gap-6 mb-6 md:grid-cols-2 md:items-start"
+      className="grid gap-6 mb-6 md:grid-cols-2 md:items-start"
       onSubmit={handleSubmit}>
       <div className="flex flex-col gap-4">
         <RetroWindow className="mb-2" title="Game details" barColor="bg-pink">
