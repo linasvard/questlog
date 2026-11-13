@@ -1,38 +1,19 @@
-import { useEffect, useState } from 'react';
-import { getAllGames } from '../../api/games';
-import type { Game } from '../../types/game';
+import { useState } from 'react';
 import GameList from '../GameList';
 import HeroSection from '../HeroSection';
 import SearchBar from '../SearchBar';
 import StatusFilter, { type Filter } from '../StatusFilter';
+import { useGames } from '../../hooks/useGames';
 
 const Home = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const { games, isLoading, error } = useGames();
   const [filter, setFilter] = useState<Filter>('all');
   const [search, setSearch] = useState('');
 
-  const searchTerm = search.toLowerCase();
+  const searchTerm = search.trim().toLowerCase();
   const visibleGames = games
     .filter((game) => filter === 'all' || game.status === filter)
     .filter((game) => game.title.toLowerCase().includes(searchTerm));
-
-  useEffect(() => {
-    const fetchGames = async () => {
-      setIsLoading(true);
-      try {
-        const data = await getAllGames();
-        setGames(data);
-      } catch (error) {
-        setError(error instanceof Error ? error.message : 'Unknown error');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchGames();
-  }, []);
 
   return (
     <div>
