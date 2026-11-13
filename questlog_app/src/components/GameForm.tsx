@@ -2,6 +2,7 @@ import { capitalize } from '../utils/format';
 import { STATUSES, type GameFormValues, type GameStatus } from '../types/game';
 import { type SubmitEvent, useState } from 'react';
 import RetroWindow from './RetroWindow';
+import ImagePreview from './ImagePreview';
 
 type GameFormProps = {
   initialValues?: GameFormValues;
@@ -43,9 +44,6 @@ const GameForm = ({
   );
   const [categoryInput, setCategoryInput] = useState('');
   const [inGameUrl, setInGameUrl] = useState(initialValues.inGameUrl);
-
-  const [coverError, setCoverError] = useState(false);
-  const [inGameError, setInGameError] = useState(false);
 
   const handleAddCategory = () => {
     const newCategory = categoryInput.trim();
@@ -115,7 +113,6 @@ const GameForm = ({
               value={coverUrl}
               onChange={(e) => {
                 setCoverUrl(e.target.value);
-                setCoverError(false);
               }}
             />
 
@@ -127,7 +124,6 @@ const GameForm = ({
               value={inGameUrl}
               onChange={(e) => {
                 setInGameUrl(e.target.value);
-                setInGameError(false);
               }}
             />
 
@@ -233,37 +229,21 @@ const GameForm = ({
 
       <div className="order-first grid grid-cols-1 sm:grid-cols-2 items-start gap-4 md:order-0">
         <div>
-          <RetroWindow title="Cover image preview" barColor="bg-blue">
-            {coverUrl && !coverError ? (
-              <img
-                src={coverUrl}
-                alt="Cover preview"
-                className="h-auto w-full border-[3px] border-black"
-                onError={() => setCoverError(true)}
-              />
-            ) : (
-              <div className="font-pixel-2 flex aspect-2/1 sm:aspect-square lg:aspect-3/4 w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
-                {coverError ? "Couldn't load the image" : 'No cover yet'}
-              </div>
-            )}
-          </RetroWindow>
+          <ImagePreview
+            url={coverUrl}
+            title="Cover image preview"
+            barColor="bg-blue"
+            emptyText="No cover yet"
+          />
         </div>
 
         <div>
-          <RetroWindow title="Extra image preview" barColor="bg-orange">
-            {inGameUrl && !inGameError ? (
-              <img
-                src={inGameUrl}
-                alt="Extra image preview"
-                className="h-auto w-full border-[3px] border-black"
-                onError={() => setInGameError(true)}
-              />
-            ) : (
-              <div className="font-pixel-2 flex aspect-2/1 sm:aspect-square lg:aspect-3/4 w-full items-center justify-center border-2 border-dashed border-black/30 p-2 text-center text-black/50">
-                {inGameError ? "Couldn't load the image" : 'No extra image yet'}
-              </div>
-            )}
-          </RetroWindow>
+          <ImagePreview
+            url={inGameUrl}
+            title="Extra image preview"
+            barColor="bg-orange"
+            emptyText="No extra image yet"
+          />
         </div>
       </div>
     </form>

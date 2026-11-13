@@ -21,6 +21,22 @@
   --color-green: #01ab55;
   --color-orange: #f99026;
   --grid-size: 1.5rem;
+
+  /* Animate */
+  --animate-fill-block: fill-block 1.8s steps(1) infinite;
+}
+
+@keyframes fill-block {
+  0% {
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 #root {

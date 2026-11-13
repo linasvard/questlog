@@ -1,46 +1,19 @@
 import { useNavigate, useParams } from 'react-router';
-import { deleteGame, getGame, updateGame } from '../../api/games';
-import {
-  deleteGameExtra,
-  getGameExtra,
-  saveGameExtra,
-  type GameExtra,
-} from '../../api/extras';
-import { useEffect, useState } from 'react';
-import { type Game, type GameFormValues } from '../../types/game';
+import { deleteGame, updateGame } from '../../api/games';
+import { deleteGameExtra, saveGameExtra } from '../../api/extras';
+import { useState } from 'react';
+import { type GameFormValues } from '../../types/game';
 import GameForm from '../GameForm';
+import { useGame } from '../../hooks/useGame';
+import Loader from '../Loader';
 
 const EditGamePage = () => {
   const { gameId } = useParams<{ gameId: string }>();
   const navigate = useNavigate();
 
-  const [game, setGame] = useState<Game | null>(null);
-  const [extra, setExtra] = useState<GameExtra | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    const fetchGame = async () => {
-      if (!gameId) return;
-      setIsLoading(true);
-      try {
-        const data = await getGame(gameId);
-        setGame(data);
-        try {
-          setExtra(await getGameExtra(gameId));
-        } catch {
-          setExtra(null);
-        }
-      } catch (error) {
-        setError(error instanceof Error ? error.message : 'Unknown error');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchGame();
-  }, [gameId]);
+  const { game, extra, isLoading, error } = useGame(gameId);
 
   const handleSave = async (values: GameFormValues) => {
     if (!gameId) return;
@@ -66,15 +39,14 @@ const EditGamePage = () => {
     }
   };
 
-  if (isLoading) return <p>Loading game...</p>;
+  if (isLoading) return <Loader label="Loading game..." />;
   if (error) return <p>Error: {error}</p>;
   if (!game) return <p>Game not found.</p>;
 
   return (
     <div className="p-6">
       <h1 className="text-center content-width">Edit game</h1>
-      {isLoading && <p>Loading game...</p>}
-      {message && <p role="status">{message}</p>}
+      {message && <p role="status">❌ {message}</p>}
 
       <GameForm
         initialValues={{
