@@ -9,7 +9,9 @@ const StatusFilter = ({ active, onChange }: StatusFilterProps) => {
 
   return (
     <div className="flex flex-wrap items-center gap-4">
-      <p className="text-light">Browse by:</p>
+      <p className="w-full sm:w-auto text-light/80 text-sm font-pixel-2">
+        Browse by:
+      </p>
       {filters.map((filter) => {
         const isActive = active === filter;
         return (
