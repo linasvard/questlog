@@ -47,7 +47,7 @@ const EditGamePage = () => {
     <div className="content-width">
       <h1
         className="text-center text-xl uppercase p-3
-bg-light shadow border-[3px] border-dark text-heading mb-5">
+bg-light shadow border-[3px] border-dark text-dark text-heading mb-5">
         Edit game
       </h1>
       {message && <p role="status">❌ {message}</p>}

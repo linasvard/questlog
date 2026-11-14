@@ -27,7 +27,7 @@ const AddGamePage = () => {
     <div className="md:p-4 content-width">
       <h1
         className="text-center text-xl uppercase p-3
-bg-green shadow border-[3px] border-dark text-heading mb-5">
+bg-green shadow border-[3px] border-dark text-dark text-heading mb-5">
         Add game
       </h1>
       {message && <p role="status">❌ {message}</p>}

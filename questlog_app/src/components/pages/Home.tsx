@@ -21,13 +21,17 @@ const Home = () => {
       <div className="sticky top-[14%] z-0">
         <HeroSection />
       </div>
-      <section className="relative z-10 min-h-screen rounded-t-4xl bg-grid p-4">
-        <div className="flex content-width mt-5 flex-col gap-10 md:flex-row md:items-center md:justify-between">
+      <section className="content-width relative z-10 min-h-screen rounded-t-4xl bg-grid p-4">
+        <div className="flex mt-5 flex-col gap-10 md:flex-row md:items-center md:justify-between">
           <StatusFilter active={filter} onChange={setFilter} />
           <SearchBar value={search} onChange={setSearch} />
         </div>
-        <h2 className="content-width mt-7 font-pixel text-xl">My games</h2>
-        <div className="mt-10 mb-15 md:mb-30">
+        <h1
+          className="text-center text-xl mt-10 uppercase p-3
+bg-yellow shadow border-[3px] border-dark text-dark text-heading mb-5">
+          My games
+        </h1>
+        <div className="mt-6 mb-15 md:mb-30">
           {isLoading && <Loader label="Loading games..." />}
           {error && <p>Något gick fel: {error}</p>}
           {!isLoading && !error && <GameList games={visibleGames} />}

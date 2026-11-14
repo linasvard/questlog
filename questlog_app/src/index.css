@@ -51,7 +51,6 @@ label {
 }
 
 h1 {
-  color: var(--color-dark);
   margin-bottom: 20px;
 }
 
@@ -238,4 +237,15 @@ select:focus {
 
 .cls-1 {
   fill: var(--color-dark);
+}
+
+.error-letter {
+  fill: var(--color-red);
+  stroke: var(--color-dark);
+  stroke-miterlimit: 10;
+  stroke-width: 4px;
+}
+
+.error-shadow {
+  fill: var(--color-green);
 }
