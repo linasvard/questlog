@@ -108,15 +108,14 @@ från en hook.
 - **Samma mönster överallt.** Alla hooks returnerar data, laddning och fel på
   samma sätt, så sidorna hanterar dem likadant.
 
-  ## Eget API för kategorier och extra bild
+## Eget API för kategorier och extra bild
 
-  Questlog API sparar bara de fält det har i sin modell, så kategorier kunde
-  inte sparas där. Jag tog då beslutet att bygga ett mindre API med Vercel
-  Functions och MongoDB. Det kopplas ihop med spelen via spelets `id` från
-  Questlog API.
+Questlog API sparar bara de fält det har i sin modell, så kategorier kunde inte
+sparas där. Jag tog då beslutet att bygga ett mindre API med Vercel Functions
+och MongoDB. Det kopplas ihop med spelen via spelets `id` från Questlog API.
 
-  | Metod  | URL                      | Gör                                                          |
-  | ------ | ------------------------ | ------------------------------------------------------------ |
-  | GET    | `/api/extras?gameId=...` | Hämtar kategorier och extra bild för ett spel, eller 404     |
-  | POST   | `api/extras`             | Skapar eller uppdaterar: `{ gameId, categories, inGameUrl }` |
-  | DELETE | `api/extras?gameId=...`  | Tar bort ett spels extras                                    |
+| Metod  | URL                      | Gör                                                          |
+| ------ | ------------------------ | ------------------------------------------------------------ |
+| GET    | `/api/extras?gameId=...` | Hämtar kategorier och extra bild för ett spel, eller 404     |
+| POST   | `api/extras`             | Skapar eller uppdaterar: `{ gameId, categories, inGameUrl }` |
+| DELETE | `api/extras?gameId=...`  | Tar bort ett spels extras                                    |
