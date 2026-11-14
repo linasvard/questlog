@@ -20,6 +20,11 @@ spelar just nu, har klarat eller lagt ner. Applikationen är byggd i React med
 TypeScript och hämtar, skapar, ändrar och tar bort spel i Questlog API
 tillsammans med eget uppbyggt API i MongoDB med Vercel Functions.
 
+### För inlämning
+
+- **Handle:** `lina-j`
+- **Betyg jag siktar på:** VG
+
 ## Funktioner
 
 - Lista alla spel, med filter för status: All, Want, Playing, Completed och
