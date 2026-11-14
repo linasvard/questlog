@@ -249,3 +249,9 @@ select:focus {
 .error-shadow {
   fill: var(--color-green);
 }
+
+@utility text-outline {
+  -webkit-text-stroke: 6px var(--color-dark);
+  paint-order: stroke fill;
+  text-shadow: 5px 5px 0 var(--color-purple);
+}
