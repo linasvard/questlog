@@ -13,13 +13,13 @@ const NotFoundPage = () => {
         The page you are looking for does not exist.
       </p>
       <div className="flex gap-4 mt-6 justify-center items-center flex-wrap">
-        <Link to="/" className="btn bg-light text-dark border-2 border-dark">
+        <Link to="/" className="btn bg-light text-dark border-3 border-dark">
           ← Go home
         </Link>
         <span className="font-pixel">or</span>
         <Link
           to="/games/new"
-          className="btn-link bg-yellow text-dark border-2 border-dark">
+          className="btn-link bg-yellow text-dark border-3 border-dark">
           + Add game
         </Link>
       </div>
