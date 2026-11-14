@@ -1,27 +1,15 @@
-import { addGame } from '../../api/games';
 import type { GameFormValues } from '../../types/game';
+import { useSaveGame } from '../../hooks/useSaveGame';
 import GameForm from '../GameForm';
 import { useNavigate } from 'react-router';
-import { useState } from 'react';
-import { saveGameExtra } from '../../api/extras';
 
 const AddGamePage = () => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState('');
+  const { createGame, error } = useSaveGame();
+
   const handleCreate = async (values: GameFormValues) => {
-    const { categories, inGameUrl, ...gameValues } = values;
-
-    try {
-      const newGame = await addGame(gameValues);
-
-      if (categories.length > 0 || inGameUrl) {
-        await saveGameExtra(newGame.id, { categories, inGameUrl });
-      }
-
-      navigate('/');
-    } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Unknown error');
-    }
+    const newGame = await createGame(values);
+    if (newGame) navigate(`/games/${newGame.id}`);
   };
   return (
     <div className="md:p-4 content-width">
@@ -30,7 +18,7 @@ const AddGamePage = () => {
 bg-green shadow border-[3px] border-dark text-dark text-heading mb-5">
         Add game
       </h1>
-      {message && <p role="status">❌ {message}</p>}
+      {error && <p role="status">❌ {error}</p>}
       <GameForm
         submitLabel="Add game"
         onSubmit={handleCreate}
