@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 const NotFoundPage = () => {
   return (
     <div className="flex min-h-[80vh] flex-col items-center justify-start gap-4 px-4 pt-30 md:pt-20">
+      <title>Page not found | Questlog</title>
       <NotFoundIcon className="w-80 h-auto mb-10 md:w-100" aria-hidden="true" />
       <h1 className="sr-only">404 - Page not found</h1>
       <p className="md:text-5xl text-outline text-3xl text-pink font-pixel uppercase font-bold">

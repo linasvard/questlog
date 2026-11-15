@@ -15,6 +15,7 @@ const AddGamePage = () => {
   };
   return (
     <div className="md:p-4 content-width">
+      <title>{`Add Game | Questlog`}</title>
       <h1
         className="text-center text-xl uppercase p-3
 bg-green shadow border-[3px] border-dark text-dark text-heading mb-5">

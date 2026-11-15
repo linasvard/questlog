@@ -19,6 +19,7 @@ const Home = () => {
 
   return (
     <div>
+      <title>Questlog | Track your games</title>
       <div className="sticky top-[14%] z-0">
         <HeroSection />
       </div>

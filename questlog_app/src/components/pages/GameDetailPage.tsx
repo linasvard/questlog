@@ -31,6 +31,7 @@ const GameDetailPage = () => {
 
   return (
     <section className="content-width px-5 md:px-2">
+      <title>{`${game.title} | Questlog`}</title>
       <h1
         className={`text-center text-xl text-dark uppercase p-3 ${STATUS_COLORS[game.status]} shadow border-[3px] border-dark text-heading mb-5`}>
         {game.title}
