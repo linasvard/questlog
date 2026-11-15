@@ -2,12 +2,23 @@ import { useEffect, useState } from 'react';
 
 export const useLocalStorage = <T>(key: string, initialValue: T) => {
   const [storedValue, setStoredValue] = useState<T>(() => {
-    console.log('Initializing localStorage for key:', key);
-    const cachedValue = localStorage.getItem(key);
-    return cachedValue !== null ? JSON.parse(cachedValue) : initialValue;
+    try {
+      const cachedValue = localStorage.getItem(key);
+      return cachedValue !== null
+        ? (JSON.parse(cachedValue) as T)
+        : initialValue;
+    } catch {
+      return initialValue;
+    }
   });
+
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(storedValue));
+    try {
+      localStorage.setItem(key, JSON.stringify(storedValue));
+    } catch {
+      // Ignore storage errors (e.g. private mode) so the app keeps working
+    }
   }, [key, storedValue]);
+
   return [storedValue, setStoredValue] as const;
 };
