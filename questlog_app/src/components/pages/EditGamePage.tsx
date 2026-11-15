@@ -33,7 +33,7 @@ const EditGamePage = () => {
     <div className="content-width">
       <title>{`Edit ${game?.title} | Questlog`}</title>
       <h1
-        className="text-center text-xl uppercase p-3
+        className="text-center text-xl uppercase p-2.5
 bg-light shadow border-[3px] border-dark text-dark text-heading mb-5">
         Edit game
       </h1>
