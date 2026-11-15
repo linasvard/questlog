@@ -2,6 +2,7 @@ import type { GameFormValues } from '../../types/game';
 import { useSaveGame } from '../../hooks/useSaveGame';
 import GameForm from '../GameForm';
 import { useNavigate } from 'react-router';
+import ErrorMessage from '../ErrorMessage';
 
 const AddGamePage = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const AddGamePage = () => {
 bg-green shadow border-[3px] border-dark text-dark text-heading mb-5">
         Add game
       </h1>
-      {error && <p role="status">❌ {error}</p>}
+      {error && <ErrorMessage message={error} showBackLink />}
       <GameForm
         submitLabel="Add game"
         onSubmit={handleCreate}

@@ -5,6 +5,7 @@ import StatusFilter, { type Filter } from '../StatusFilter';
 import { useGames } from '../../hooks/useGames';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import Loader from '../Loader';
+import ErrorMessage from '../ErrorMessage';
 
 const Home = () => {
   const { games, isLoading, error } = useGames();
@@ -33,7 +34,7 @@ bg-yellow shadow border-[3px] border-dark text-dark text-heading mb-5">
         </h1>
         <div className="mt-6 mb-15 md:mb-30">
           {isLoading && <Loader label="Loading games..." />}
-          {error && <p>Något gick fel: {error}</p>}
+          {error && <ErrorMessage message={error} />}
           {!isLoading && !error && <GameList games={visibleGames} />}
         </div>
       </section>

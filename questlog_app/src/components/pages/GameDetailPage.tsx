@@ -7,6 +7,7 @@ import EditIcon from '../../assets/icons/EditIcon';
 import Badge from '../Badge';
 import ImagePlaceholder from '../ImagePlaceholder';
 import Loader from '../Loader';
+import ErrorMessage from '../ErrorMessage';
 
 const GameDetailPage = () => {
   const { gameId } = useParams<{ gameId: string }>();
@@ -18,8 +19,15 @@ const GameDetailPage = () => {
         <Loader label="Loading game..." />
       </div>
     );
-  if (error) return <p>Error: {error}</p>;
-  if (!game) return <p>Game not found.</p>;
+  if (error) return <ErrorMessage message={error} showBackLink />;
+  if (!game)
+    return (
+      <ErrorMessage
+        title="Not found"
+        message="This game does not exist"
+        showBackLink
+      />
+    );
 
   return (
     <section className="content-width px-5 md:px-2">
