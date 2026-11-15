@@ -10,7 +10,8 @@ const AddGamePage = () => {
 
   const handleCreate = async (values: GameFormValues) => {
     const newGame = await createGame(values);
-    if (newGame) navigate(`/games/${newGame.id}`);
+    if (newGame)
+      navigate(`/games/${newGame.id}`, { state: { toast: 'Game added!' } });
   };
   return (
     <div className="md:p-4 content-width">

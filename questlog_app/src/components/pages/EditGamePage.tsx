@@ -14,14 +14,15 @@ const EditGamePage = () => {
   const handleSave = async (values: GameFormValues) => {
     if (!gameId) return;
     const updated = await editGame(gameId, values);
-    if (updated) navigate(`/games/${gameId}`);
+    if (updated)
+      navigate(`/games/${gameId}`, { state: { toast: 'Game updated!' } });
   };
 
   const handleDelete = async () => {
     if (!gameId) return;
     if (!confirm(`Delete ${game?.title}?`)) return;
     const deleted = await removeGame(gameId);
-    if (deleted) navigate('/');
+    if (deleted) navigate('/', { state: { toast: 'Game deleted!' } });
   };
 
   if (isLoading) return <Loader label="Loading game..." />;

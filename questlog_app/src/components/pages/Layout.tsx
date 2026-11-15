@@ -1,9 +1,24 @@
-import { NavLink, Outlet, ScrollRestoration } from 'react-router';
+import {
+  NavLink,
+  Outlet,
+  ScrollRestoration,
+  useLocation,
+  useNavigate,
+} from 'react-router';
 import Footer from '../Footer';
 import QuestlogLogoH from '../../assets/icons/QuestlogLogoS';
 import NavLinks from '../NavLinks';
+import Toast from '../Toast';
 
 const Layout = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const toast = (location.state as { toast?: string } | null)?.toast;
+
+  const closeToast = () => {
+    navigate(location.pathname, { replace: true, state: null });
+  };
+
   return (
     <div className="bg-grid min-h-screen flex flex-col">
       <ScrollRestoration />
@@ -27,6 +42,9 @@ const Layout = () => {
       <footer className="z-20">
         <Footer />
       </footer>
+      {toast && (
+        <Toast key={location.key} message={toast} onClose={closeToast} />
+      )}
     </div>
   );
 };
