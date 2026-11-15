@@ -15,7 +15,7 @@
 
 ## Om projektet
 
-**Questlog** är en såkallad spelbacklog där du kan lista de spel du vill spela,
+**Questlog** är en så kallad spelbacklog där du kan lista de spel du vill spela,
 spelar just nu, har klarat eller lagt ner. Applikationen är byggd i React med
 TypeScript och hämtar, skapar, ändrar och tar bort spel i Questlog API
 tillsammans med eget uppbyggt API i MongoDB med Vercel Functions.
@@ -27,8 +27,8 @@ tillsammans med eget uppbyggt API i MongoDB med Vercel Functions.
 
 ## Funktioner
 
-- Lista alla spel, med filter för status: All, Want, Playing, Completed och
-  Dropped
+- Lista alla spel, med filter för status: All, Want to play, Playing, Completed
+  och Dropped
 - Valt filter sparas i LocalStorage och finns kvar vid omladdning med hjälp av
   en custom hook
 - Sök på spelets titel
@@ -43,12 +43,17 @@ tillsammans med eget uppbyggt API i MongoDB med Vercel Functions.
 
 ```bash
 git clone https://github.com/linasvard/questlog.git
-cd questlog_app
+cd questlog/questlog_app
 npm install
 npm run dev
 ```
 
 Öppna servern i `http://localhost:5173`
+
+Spelen hämtas från Questlog API och fungerar direkt. Kategorier och extra bild
+hämtas från mitt eget API på Vercel. I utvecklingsläget skickar Vite vidare
+anrop till `/api` till den deployade versionen (se `server.proxy` i
+`vite.config.ts`).
 
 ### Kör det egna API:et lokalt (frivilligt)
 
@@ -72,12 +77,12 @@ All logik för att hämta och spara data ligger i egna hooks. Komponenterna
 anropar aldrig `fetch` själva, utan får färdig data, laddningsstatus och fel
 från en hook.
 
-| Hook                                 | Gör                                                                                                                                             |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `useGames()`                         | Hämtar alla spel. Returnerar `{ games, isLoading, error }`.                                                                                     |
-| `useGame(gameId)`                    |  Hämtar ett spel och dess extr ainformation (kaketgorier och bild) samtidigt med `Promise.all`. Returnerar `{ game, extra, isLoading, error }`. |
-| `useSaveGame()`                      | Samlar POST, PATCH och DELETE. Returnerar `{ createGame, editGame, removeGame, isSaving, error }`.                                              |
-| `useLocalStorage(key, initialValue)` | Fungerar som `useState` men sparar värdet i `LocalStorage`. Används för statusfiltret och sökrutan.                                             |
+| Hook                                 | Gör                                                                                                                                            |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `useGames()`                         | Hämtar alla spel. Returnerar `{ games, isLoading, error }`.                                                                                    |
+| `useGame(gameId)`                    |  Hämtar ett spel och dess extra information (kategorier och bild) samtidigt med `Promise.all`. Returnerar `{ game, extra, isLoading, error }`. |
+| `useSaveGame()`                      | Samlar POST, PATCH och DELETE. Returnerar `{ createGame, editGame, removeGame, isSaving, error }`.                                             |
+| `useLocalStorage(key, initialValue)` | Fungerar som `useState` men sparar värdet i `LocalStorage`. Används för statusfiltret och sökrutan.                                            |
 
 ### Hur de fungerar
 
@@ -88,7 +93,7 @@ från en hook.
   spelet ändå, bara utan extras.
 - **`useSaveGame`** har en gemensam hjälpfunktion som sköter laddning och fel
   för alla tre anropen. När ett spel sparas delas formulärets värden upp: titel,
-  plattform, status, betyf, omslag och anteckningar skickas till Questlog API,
+  plattform, status, betyg, omslag och anteckningar skickas till Questlog API,
   medan kategorier och extrabilden skickas till mitt egna API. Tas ett spel bort
   tas även dess extras bort.
 - **`useLocalStorage`** läser det sparade värdet en gång när komponenten startar
