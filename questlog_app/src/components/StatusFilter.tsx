@@ -20,7 +20,7 @@ const StatusFilter = ({ active, onChange }: StatusFilterProps) => {
             type="button"
             onClick={() => onChange(filter)}
             aria-pressed={isActive}
-            className={`btn text-sm ${isActive ? STATUS_COLORS[filter] : ''}`}>
+            className={`btn text-md ${isActive ? STATUS_COLORS[filter] : ''}`}>
             {filter === 'want' ? 'Want to play' : filter}
           </button>
         );
