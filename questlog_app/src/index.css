@@ -24,6 +24,16 @@
 
   /* Animate */
   --animate-fill-block: fill-block 1.8s steps(1) infinite;
+  --animate-slide-in: slide-in 0.2s ease-out;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(120%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes fill-block {
