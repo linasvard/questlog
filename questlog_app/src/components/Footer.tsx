@@ -14,7 +14,7 @@ const Footer = () => {
         <img
           src={LogoFooter}
           alt="Questlog"
-          className="h-auto w-full md:col-start-1 md:row-start-2 md:w-120 md:self-end"
+          className="h-auto w-full md:col-start-1 md:row-start-2 md:w-90 md:self-end"
         />
 
         <nav
