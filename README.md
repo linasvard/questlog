@@ -35,7 +35,7 @@ tillsammans med eget uppbyggt API i MongoDB med Vercel Functions.
 - Sida för varje spel med omslag, plattform, betyg, anteckningar och från eget
   api, kategorier och extra bild
 - Lägg till, ändra eller ta bort spel
-- Laddningsindikator
+- Laddningsindikator och felmeddelanden
 - 404-sida för sidor som inte finns
 - Responsiv design
 
@@ -82,19 +82,19 @@ från en hook.
 | `useGames()`                         | Hämtar alla spel. Returnerar `{ games, isLoading, error }`.                                                                                    |
 | `useGame(gameId)`                    |  Hämtar ett spel och dess extra information (kategorier och bild) samtidigt med `Promise.all`. Returnerar `{ game, extra, isLoading, error }`. |
 | `useSaveGame()`                      | Samlar POST, PATCH och DELETE. Returnerar `{ createGame, editGame, removeGame, isSaving, error }`.                                             |
-| `useLocalStorage(key, initialValue)` | Fungerar som `useState` men sparar värdet i `LocalStorage`. Används för statusfiltret och sökrutan.                                            |
+| `useLocalStorage(key, initialValue)` | Fungerar som `useState` men sparar värdet i `localStorage`. Används för statusfiltret och sökrutan.                                            |
 
 ### Hur de fungerar
 
 - **`useGames` och `useGame`** hämtar data i en `useEffect` och håller reda på
   tre saker: datan, om den laddar och om något gick fel. `useGame` hämtar spelet
-  från Questlog och extras från mitt egna API **samtidigt**, så att sidan inte
-  behöver vänta på två anrop efter varandra. Svarar inte mitt egna API visas
+  från Questlog och extras från mitt eget API **samtidigt**, så att sidan inte
+  behöver vänta på två anrop efter varandra. Svarar inte mitt eget API visas
   spelet ändå, bara utan extras.
 - **`useSaveGame`** har en gemensam hjälpfunktion som sköter laddning och fel
   för alla tre anropen. När ett spel sparas delas formulärets värden upp: titel,
   plattform, status, betyg, omslag och anteckningar skickas till Questlog API,
-  medan kategorier och extrabilden skickas till mitt egna API. Tas ett spel bort
+  medan kategorier och extrabilden skickas till mitt eget API. Tas ett spel bort
   tas även dess extras bort.
 - **`useLocalStorage`** läser det sparade värdet en gång när komponenten startar
   och sparar det igen varje gång det ändras. Värdet omvandlas till och från
@@ -122,5 +122,5 @@ och MongoDB. Det kopplas ihop med spelen via spelets `id` från Questlog API.
 | Metod  | URL                      | Gör                                                          |
 | ------ | ------------------------ | ------------------------------------------------------------ |
 | GET    | `/api/extras?gameId=...` | Hämtar kategorier och extra bild för ett spel, eller 404     |
-| POST   | `api/extras`             | Skapar eller uppdaterar: `{ gameId, categories, inGameUrl }` |
-| DELETE | `api/extras?gameId=...`  | Tar bort ett spels extras                                    |
+| POST   | `/api/extras`            | Skapar eller uppdaterar: `{ gameId, categories, inGameUrl }` |
+| DELETE | `/api/extras?gameId=...` | Tar bort ett spels extras                                    |
