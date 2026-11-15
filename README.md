@@ -29,8 +29,8 @@ tillsammans med eget uppbyggt API i MongoDB med Vercel Functions.
 
 - Lista alla spel, med filter för status: All, Want to play, Playing, Completed
   och Dropped
-- Valt filter sparas i LocalStorage och finns kvar vid omladdning med hjälp av
-  en custom hook
+- Valt filter och sökord sparas i localStorage med en custom hook och finns kvar
+  vid omladdning
 - Sök på spelets titel
 - Sida för varje spel med omslag, plattform, betyg, anteckningar och från eget
   api, kategorier och extra bild
